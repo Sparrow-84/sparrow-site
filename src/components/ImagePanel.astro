@@ -1,0 +1,39 @@
+---
+// Renders a real image when one is provided, otherwise a clean branded placeholder
+// so the site looks finished before final photography arrives.
+interface Props {
+  src?: string;
+  alt?: string;
+  ratio?: string;
+  label?: string;
+  class?: string;
+  eager?: boolean;
+}
+const {
+  src,
+  alt = '',
+  ratio = 'aspect-[4/3]',
+  label = 'Photo coming soon',
+  class: className = '',
+  eager = false,
+} = Astro.props;
+---
+
+{
+  src ? (
+    <img
+      src={src}
+      alt={alt}
+      class={`${ratio} w-full rounded-2xl object-cover shadow-card ${className}`}
+      loading={eager ? 'eager' : 'lazy'}
+    />
+  ) : (
+    <div
+      role="img"
+      aria-label={alt || label}
+      class={`${ratio} flex w-full items-center justify-center rounded-2xl bg-gradient-to-br from-sparrow-green to-sparrow-green-dark p-6 text-center shadow-card ${className}`}
+    >
+      <span class="font-sans text-sm font-medium uppercase tracking-wide text-white/60">{label}</span>
+    </div>
+  )
+}

@@ -1,0 +1,11 @@
+---
+interface Props {
+  attribution: string;
+}
+const { attribution } = Astro.props;
+---
+
+<figure class="flex h-full flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule bg-sparrow-mist dark:bg-dark-surface p-6 shadow-card">
+  <blockquote class="flex-1 text-lg italic leading-relaxed text-sparrow-ink dark:text-dark-text"><slot /></blockquote>
+  <figcaption class="mt-4 text-sm font-medium text-sparrow-gray dark:text-dark-muted">— {attribution}</figcaption>
+</figure>

@@ -1,0 +1,134 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import ValueCard from '../components/ValueCard.astro';
+import TeamMemberCard from '../components/TeamMemberCard.astro';
+import CTABand from '../components/CTABand.astro';
+import DonateButtons from '../components/DonateButtons.astro';
+
+const valueEntries = (await getCollection('values')).sort((a, b) => a.data.order - b.data.order);
+const values = await Promise.all(
+  valueEntries.map(async (v) => ({ title: v.data.title, Content: (await v.render()).Content }))
+);
+
+const team = (await getCollection('team')).filter((t) => t.data.public);
+const leadership = team
+  .filter((t) => t.data.group === 'leadership')
+  .sort((a, b) => a.data.order - b.data.order);
+const board = team
+  .filter((t) => t.data.group === 'board')
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="About"
+  description="Sparrow is a faith-based nonprofit in Corvallis, Oregon, strengthening families, building community, and demonstrating God's value for every person."
+>
+  <Section bg="sage">
+    <div class="mx-auto max-w-3xl">
+      <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">About Sparrow</p>
+      <h1 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">
+        Strengthening families. Building community. Showing God's value for people.
+      </h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        To strengthen families into health, build transformational communities, and demonstrate
+        the value God has for people by fostering environments where individuals thrive.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Our story</h2>
+        <div class="mt-4 space-y-4 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+          <p>
+            In 2016, Andrew Wenger — a leader at The Hive Church in Corvallis — had a dream. In it,
+            a single-wide home had been purchased and restored for a family in crisis, and a church
+            community surrounded them with friendship, coaching, and wraparound care. That dream
+            became Sparrow.
+          </p>
+          <p>
+            The first participant — a single mom in crisis, expecting her third child — came to his
+            church community, and the church rallied to purchase and restore a trailer, just as
+            Andrew had dreamed. In 2021, Sparrow was formally incorporated as a nonprofit.
+          </p>
+          <p>
+            Today, through a grant from the State of Oregon, Sparrow owns Twin Oaks Community in
+            South Corvallis and runs the LifeChange Program — walking families facing homelessness
+            toward lasting transformation.
+          </p>
+        </div>
+      </div>
+      <div class="rounded-2xl bg-sparrow-cream dark:bg-dark-surface p-6">
+        <h2 class="text-xl font-semibold">What's in the name</h2>
+        <p class="mt-3 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+          In Matthew 10, Jesus points to the sparrow — the cheapest bird in the market, easily
+          overlooked — as evidence that not one of them falls apart from the Father's notice. "You
+          are worth more than many sparrows." We exist for the people the world tends to overlook.
+          Every person carries immeasurable worth — not because of what they've accomplished, but
+          because of who made them.
+        </p>
+        <p class="mt-4 text-sm italic text-sparrow-gray dark:text-dark-muted">
+          "Even the sparrow finds a home, and the swallow a nest for herself, where she may lay her
+          young, at your altars, O LORD of hosts." — Psalm 84:3
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section bg="mist">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">What we value</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">
+        Eight commitments that shape how we show up for every person we serve.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {values.map(({ title, Content }) => (
+        <ValueCard title={title}><Content /></ValueCard>
+      ))}
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Our faith</h2>
+      <p class="mt-4 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+        We believe lasting transformation happens in community, and that every person is valuable to
+        God — created in His image, with inherent worth. Our faith in Jesus shapes and guides us as
+        we serve those around us.
+      </p>
+      {/* TODO: replace with Sparrow's exact statement of faith (plan reconciliation #6). */}
+    </div>
+  </Section>
+
+  <Section bg="mist">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Our team</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">The people walking alongside families every day.</p>
+    </div>
+    <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+      {leadership.map((m) => <TeamMemberCard name={m.data.name} role={m.data.role} image={m.data.photo} />)}
+    </div>
+    {
+      board.length > 0 && (
+        <Fragment>
+          <h3 class="mt-14 text-center text-lg font-semibold">Board of Directors</h3>
+          <div class="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+            {board.map((m) => <TeamMemberCard name={m.data.name} role={m.data.role} image={m.data.photo} />)}
+          </div>
+        </Fragment>
+      )
+    }
+  </Section>
+
+  <CTABand
+    title="Join the work of restoration"
+    text="However you're able — give, volunteer, or partner — you help families find hope."
+  >
+    <DonateButtons class="justify-center" />
+    <a href="/get-involved" class="btn-outline !border-white !text-white hover:!bg-white/10">Get involved</a>
+  </CTABand>
+</BaseLayout>

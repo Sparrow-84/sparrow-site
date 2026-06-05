@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-sparrow-ink antialiased dark:bg-dark-bg dark:text-dark-text;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-sparrow-green dark:text-dark-heading;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-sparrow-gold ring-offset-2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-2xl bg-sparrow-green px-6 py-3 font-sans font-medium text-white transition hover:bg-sparrow-green-dark focus-visible:ring-2 focus-visible:ring-sparrow-gold;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center rounded-2xl bg-sparrow-gold px-6 py-3 font-sans font-semibold text-sparrow-ink transition hover:brightness-105;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-2xl border border-sparrow-green px-6 py-3 font-sans font-medium text-sparrow-green transition hover:bg-sparrow-sage dark:border-dark-heading dark:text-dark-heading dark:hover:bg-dark-surface;
+  }
+  .btn-disabled {
+    @apply inline-flex cursor-not-allowed items-center justify-center rounded-2xl bg-sparrow-rule px-6 py-3 font-sans font-medium text-sparrow-gray dark:bg-dark-surface dark:text-dark-muted;
+  }
+  .field-label {
+    @apply block text-sm font-medium text-sparrow-ink dark:text-dark-text;
+  }
+  .field-input {
+    @apply mt-1 block w-full rounded-lg border border-sparrow-rule bg-white px-3 py-2 text-sparrow-ink shadow-sm focus:border-sparrow-green focus:outline-none focus:ring-1 focus:ring-sparrow-green dark:border-dark-rule dark:bg-dark-surface dark:text-dark-text dark:placeholder-dark-muted dark:focus:border-dark-heading dark:focus:ring-dark-heading;
+  }
+}

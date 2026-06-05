@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string;
+  blurb: string;
+  url: string;
+  live: boolean;
+}
+const { label, blurb, url, live } = Astro.props;
+---
+
+<div class="flex flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule bg-white dark:bg-dark-surface p-8 text-center shadow-card">
+  <h3 class="font-serif text-xl font-semibold">{label}</h3>
+  <p class="mt-2 flex-1 text-sm text-sparrow-gray dark:text-dark-muted">{blurb}</p>
+  {
+    live ? (
+      <a href={url} class="btn-primary mt-6">
+        Log in
+      </a>
+    ) : (
+      <div class="mt-6">
+        <span class="btn-disabled w-full" aria-disabled="true">
+          Coming soon
+        </span>
+        <p class="mt-2 text-xs text-sparrow-gray dark:text-dark-muted">Portal launching soon — you'll log in here.</p>
+      </div>
+    )
+  }
+</div>

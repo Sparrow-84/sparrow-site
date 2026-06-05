@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  stats: CollectionEntry<'stats'>[];
+}
+const { stats } = Astro.props;
+const sorted = [...stats].sort((a, b) => a.data.order - b.data.order);
+---
+
+<div class="grid gap-8 sm:grid-cols-3">
+  {
+    sorted.map((s) => (
+      <div class="text-center">
+        <p class="font-serif text-5xl font-semibold text-sparrow-gold">{s.data.value}</p>
+        <p class="mt-2 text-sparrow-ink/80 dark:text-dark-text/80">{s.data.label}</p>
+        {s.data.source && <p class="mt-1 text-xs text-sparrow-gray dark:text-dark-muted">{s.data.source}</p>}
+      </div>
+    ))
+  }
+</div>

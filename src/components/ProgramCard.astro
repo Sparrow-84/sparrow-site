@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ImagePanel from './ImagePanel.astro';
+import { photo } from '../lib/media';
+
+interface Props {
+  program: CollectionEntry<'programs'>;
+  href: string;
+}
+const { program, href } = Astro.props;
+const { title, summary, heroImage } = program.data;
+---
+
+<a
+  href={href}
+  class="group flex flex-col overflow-hidden rounded-2xl border border-sparrow-rule dark:border-dark-rule bg-white dark:bg-dark-surface shadow-card transition hover:shadow-md"
+>
+  <ImagePanel src={photo(heroImage)} ratio="aspect-[16/9]" label={title} class="!rounded-none !shadow-none" />
+  <div class="flex flex-1 flex-col p-6">
+    <h3 class="font-serif text-xl font-semibold">{title}</h3>
+    <p class="mt-2 flex-1 text-sparrow-gray dark:text-dark-muted">{summary}</p>
+    <span class="mt-4 font-sans text-sm font-medium text-sparrow-green dark:text-dark-heading group-hover:underline">Learn more →</span>
+  </div>
+</a>

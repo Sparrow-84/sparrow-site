@@ -1,0 +1,33 @@
+---
+import ImagePanel from './ImagePanel.astro';
+import { photo } from '../lib/media';
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  image?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+}
+const { eyebrow, title, subtitle, image, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section class="bg-sparrow-sage dark:bg-dark-surface">
+  <div class="mx-auto grid max-w-content items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
+    <div>
+      {eyebrow && <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">{eyebrow}</p>}
+      <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight sm:text-5xl">{title}</h1>
+      {subtitle && <p class="mt-5 max-w-prose text-lg text-sparrow-ink/80 dark:text-dark-text/80">{subtitle}</p>}
+      {
+        (primaryCta || secondaryCta) && (
+          <div class="mt-8 flex flex-wrap gap-3">
+            {primaryCta && <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>}
+            {secondaryCta && <a href={secondaryCta.href} class="btn-outline">{secondaryCta.label}</a>}
+          </div>
+        )
+      }
+    </div>
+    <ImagePanel src={photo(image)} ratio="aspect-[4/3]" label="Photo coming soon" eager />
+  </div>
+</section>

@@ -1,0 +1,19 @@
+# 301 redirects from the old WordPress URLs to the new routes.
+# Format: /source  /destination  301
+#
+# TODO before launch: crawl the live site (or pull the URL list from Google
+# Search Console) and add any blog, media, or category URLs so no inbound link
+# or search result 404s after the domain cutover.
+
+/about-us             /about                 301
+/about-us/            /about                 301
+/sparrow-housing      /twin-oaks             301
+/sparrow-housing/     /twin-oaks             301
+/lifechange-program   /life-change-program   301
+/lifechange-program/  /life-change-program   301
+/connect              /get-involved          301
+/connect/             /get-involved          301
+/contact-us           /contact               301
+/contact-us/          /contact               301
+/my-account           /login                 301
+/my-account/          /login                 301

@@ -1,0 +1,55 @@
+---
+import { SITE, ORG, CONTACT, SOCIAL, NAV } from '../consts';
+import NewsletterForm from './forms/NewsletterForm.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-sparrow-rule bg-sparrow-mist dark:border-dark-rule dark:bg-dark-surface">
+  <div class="mx-auto grid max-w-content gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+    <div>
+      <div class="flex items-center gap-2.5">
+        <img src="/brand/logo-primary-circle-green.png" alt="" width="40" height="40" class="h-10 w-10" />
+        <span class="font-serif text-lg font-semibold text-sparrow-green dark:text-dark-heading">{SITE.shortName}</span>
+      </div>
+      <p class="mt-3 text-sm text-sparrow-gray dark:text-dark-muted">{SITE.tagline}</p>
+      <p class="mt-3 text-sm text-sparrow-gray dark:text-dark-muted">
+        {ORG.address.street}<br />
+        {ORG.address.city}, {ORG.address.state} {ORG.address.zip}
+      </p>
+    </div>
+
+    <nav aria-label="Footer" class="text-sm">
+      <h2 class="font-sans font-semibold text-sparrow-green dark:text-dark-heading">Explore</h2>
+      <ul class="mt-3 space-y-2">
+        {NAV.map((i) => <li><a href={i.href} class="text-sparrow-ink dark:text-dark-text hover:text-sparrow-green dark:hover:text-dark-heading">{i.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <div class="text-sm">
+      <h2 class="font-sans font-semibold text-sparrow-green dark:text-dark-heading">Connect</h2>
+      <ul class="mt-3 space-y-2 text-sparrow-ink dark:text-dark-text">
+        <li><a href={`mailto:${CONTACT.general.email}`} class="hover:text-sparrow-green dark:hover:text-dark-heading">{CONTACT.general.email}</a></li>
+        <li>Twin Oaks: <a href={`tel:${CONTACT.twinOaks.phone}`} class="hover:text-sparrow-green dark:hover:text-dark-heading">{CONTACT.twinOaks.phone}</a></li>
+        <li>LifeChange: <a href={`tel:${CONTACT.lifeChange.phone}`} class="hover:text-sparrow-green dark:hover:text-dark-heading">{CONTACT.lifeChange.phone}</a></li>
+        <li class="flex gap-4 pt-1">
+          <a href={SOCIAL.facebook} class="hover:text-sparrow-green dark:hover:text-dark-heading" rel="noopener">Facebook</a>
+          <a href={SOCIAL.instagram} class="hover:text-sparrow-green dark:hover:text-dark-heading" rel="noopener">Instagram</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="text-sm">
+      <h2 class="font-sans font-semibold text-sparrow-green dark:text-dark-heading">Sparrow Monthly</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">Prayer requests, community updates, and news.</p>
+      <div class="mt-3"><NewsletterForm /></div>
+    </div>
+  </div>
+
+  <div class="border-t border-sparrow-rule dark:border-dark-rule">
+    <div class="mx-auto flex max-w-content flex-col gap-2 px-4 py-5 text-xs text-sparrow-gray dark:text-dark-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+      <p>© {year} {ORG.legalName} · A 501(c)(3) nonprofit · Corvallis, Oregon</p>
+      <p class="italic">{SITE.verse}</p>
+    </div>
+  </div>
+</footer>

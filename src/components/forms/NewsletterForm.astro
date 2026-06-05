@@ -1,0 +1,26 @@
+---
+import { WEB3FORMS_KEY, NEWSLETTER, SITE } from '../../consts';
+
+// Until the org's email tool (Brevo) form action is wired into consts.ts, signups
+// route through Web3Forms so no one is dropped. Swap NEWSLETTER.action to point at Brevo.
+const usingWeb3 = !NEWSLETTER.action;
+const action = NEWSLETTER.action || 'https://api.web3forms.com/submit';
+---
+
+<form action={action} method="POST" class="flex flex-col gap-2 sm:flex-row">
+  {usingWeb3 && <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />}
+  {usingWeb3 && <input type="hidden" name="subject" value="New Sparrow Monthly signup" />}
+  {usingWeb3 && <input type="hidden" name="redirect" value={`${SITE.url}/thank-you`} />}
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <label class="sr-only" for="nl-email">Email address</label>
+  <input
+    id="nl-email"
+    type="email"
+    name="email"
+    required
+    placeholder="you@example.com"
+    class="field-input sm:flex-1"
+  />
+  <button type="submit" class="btn-primary !px-5 !py-2 text-sm">Subscribe</button>
+</form>

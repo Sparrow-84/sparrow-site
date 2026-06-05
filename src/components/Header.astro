@@ -1,0 +1,98 @@
+---
+import { SITE, NAV } from '../consts';
+---
+
+<header class="sticky top-0 z-40 border-b border-sparrow-rule bg-white/95 backdrop-blur dark:border-dark-rule dark:bg-dark-bg/95">
+  <div class="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-3 sm:px-6">
+    <a href="/" class="flex items-center gap-2.5" aria-label={`${SITE.name} home`}>
+      <img src="/brand/logo-primary-circle-green.png" alt="" width="40" height="40" class="h-10 w-10" />
+      <span class="font-serif text-lg font-semibold text-sparrow-green dark:text-dark-heading">{SITE.shortName}</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden items-center gap-6 md:flex">
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium text-sparrow-ink transition hover:text-sparrow-green dark:text-dark-text dark:hover:text-dark-heading"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/give" class="btn-gold !px-5 !py-2 text-sm">Donate</a>
+      <a href="/login" class="text-sm font-medium text-sparrow-green hover:underline dark:text-dark-heading">Log in</a>
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Switch between light and dark mode"
+        class="rounded-lg p-2 text-sparrow-green transition hover:bg-sparrow-sage dark:text-dark-heading dark:hover:bg-dark-surface"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+        </svg>
+        <span class="sr-only">Toggle dark mode</span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu: no-JS, uses native <details> -->
+    <details class="relative md:hidden">
+      <summary
+        class="flex cursor-pointer list-none items-center rounded-lg p-2 text-sparrow-green [&::-webkit-details-marker]:hidden dark:text-dark-heading"
+        aria-label="Toggle menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </summary>
+      <div class="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-sparrow-rule bg-white p-2 shadow-card dark:border-dark-rule dark:bg-dark-surface">
+        <nav aria-label="Mobile" class="flex flex-col">
+          {
+            NAV.map((item) => (
+              <a
+                href={item.href}
+                class="rounded-lg px-3 py-2 text-sm font-medium text-sparrow-ink hover:bg-sparrow-sage dark:text-dark-text dark:hover:bg-dark-bg"
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <a href="/give" class="mt-1 rounded-lg bg-sparrow-gold px-3 py-2 text-center text-sm font-semibold text-sparrow-ink">Donate</a>
+          <a href="/login" class="rounded-lg px-3 py-2 text-sm font-medium text-sparrow-green hover:bg-sparrow-sage dark:text-dark-heading dark:hover:bg-dark-bg">Log in</a>
+          <button
+            type="button"
+            data-theme-toggle
+            class="mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-left text-sm font-medium text-sparrow-ink hover:bg-sparrow-sage dark:text-dark-text dark:hover:bg-dark-bg"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dark:hidden" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+            </svg>
+            <span class="dark:hidden">Dark mode</span>
+            <span class="hidden dark:block">Light mode</span>
+          </button>
+        </nav>
+      </div>
+    </details>
+  </div>
+</header>
+
+<script is:inline>
+  document.querySelectorAll('[data-theme-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var isDark = document.documentElement.classList.toggle('dark');
+      try {
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      } catch (e) {}
+    });
+  });
+</script>

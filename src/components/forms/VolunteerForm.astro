@@ -1,0 +1,50 @@
+---
+import { WEB3FORMS_KEY, SITE } from '../../consts';
+---
+
+<form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+  <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+  <input type="hidden" name="subject" value="New volunteer interest from sparrowinc.org" />
+  <input type="hidden" name="from_name" value="Sparrow Website" />
+  <input type="hidden" name="redirect" value={`${SITE.url}/thank-you`} />
+  <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label class="field-label" for="v-name">Your name</label>
+      <input id="v-name" class="field-input" type="text" name="name" required autocomplete="name" />
+    </div>
+    <div>
+      <label class="field-label" for="v-email">Email</label>
+      <input id="v-email" class="field-input" type="email" name="email" required autocomplete="email" />
+    </div>
+  </div>
+
+  <div>
+    <label class="field-label" for="v-phone">Phone (optional)</label>
+    <input id="v-phone" class="field-input" type="tel" name="phone" autocomplete="tel" />
+  </div>
+
+  <div>
+    <label class="field-label" for="v-interest">How would you like to help?</label>
+    <select id="v-interest" class="field-input" name="interest">
+      <option>Wherever I'm needed</option>
+      <option>Work crews &amp; projects</option>
+      <option>Providing meals</option>
+      <option>Restocking homes</option>
+      <option>Financial mentorship</option>
+      <option>Peer support</option>
+      <option>Service Volunteer Program (live-in)</option>
+    </select>
+  </div>
+
+  <div>
+    <label class="field-label" for="v-message">Anything you'd like us to know?</label>
+    <textarea id="v-message" class="field-input" name="message" rows="4"></textarea>
+  </div>
+
+  <button type="submit" class="btn-primary">I'm interested</button>
+  <p class="text-xs text-sparrow-gray dark:text-dark-muted">
+    We'll follow up personally to find the right fit — at Sparrow, volunteering is relationship first.
+  </p>
+</form>

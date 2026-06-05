@@ -1,0 +1,13 @@
+---
+import ImagePanel from './ImagePanel.astro';
+import { photo } from '../lib/media';
+
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+  {images.map((img, i) => <ImagePanel src={photo(img)} ratio="aspect-[4/3]" label={`Photo ${i + 1}`} />)}
+</div>

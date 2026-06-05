@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import VolunteerForm from '../components/forms/VolunteerForm.astro';
+import DonateButtons from '../components/DonateButtons.astro';
+import CTABand from '../components/CTABand.astro';
+import { SHOP_URL } from '../consts';
+
+const ways = [
+  'Work crews & projects',
+  'Providing meals',
+  'Restocking homes for new families',
+  'Financial mentorship',
+  'Peer support',
+  'The Service Volunteer Program — a year-long, live-in service role at Twin Oaks',
+];
+---
+
+<BaseLayout
+  title="Get Involved"
+  description="Volunteer, partner, or give to help Corvallis families find stability and hope."
+>
+  <Section bg="sage">
+    <div class="mx-auto max-w-3xl">
+      <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">Get involved</p>
+      <h1 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">Join the work of restoration</h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        Sparrow runs on relationships. Whether you give an afternoon, a meal, or a monthly gift, you
+        help families rebuild hope and pursue wholeness.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Ways to volunteer</h2>
+        <ul class="mt-4 space-y-2">
+          {ways.map((w) => (
+            <li class="flex gap-2"><span class="text-sparrow-gold">✓</span><span>{w}</span></li>
+          ))}
+        </ul>
+
+        <h2 class="mt-10 text-2xl font-semibold sm:text-3xl">Partner with us</h2>
+        <p class="mt-4 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+          Churches, businesses, and organizations: schedule a meeting or host a presentation from
+          the Sparrow team. Our approach to partnership is relational, not transactional — we'd love
+          to get to know you.
+        </p>
+        <p class="mt-4 text-sm text-sparrow-gray dark:text-dark-muted">
+          You can also support the mission by shopping
+          {' '}<a class="text-sparrow-green dark:text-dark-heading underline" href={SHOP_URL}>Sparrow merch</a> — 100% of
+          profits go to Sparrow.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-sparrow-rule dark:border-dark-rule bg-sparrow-mist dark:bg-dark-surface p-6">
+        <h2 class="text-xl font-semibold">I'd like to help</h2>
+        <p class="mt-2 text-sm text-sparrow-gray dark:text-dark-muted">
+          Tell us a little about yourself and we'll follow up personally.
+        </p>
+        <div class="mt-4"><VolunteerForm /></div>
+      </div>
+    </div>
+  </Section>
+
+  <CTABand title="Prefer to give?" text="Every gift helps a family move from crisis to stability.">
+    <DonateButtons class="justify-center" />
+  </CTABand>
+</BaseLayout>

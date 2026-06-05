@@ -1,0 +1,82 @@
+---
+import { SITE } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = SITE.description,
+  ogImage = '/brand/logo-primary-circle-green.png',
+  noindex = false,
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${SITE.name}` : `${SITE.name} — ${SITE.tagline}`;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImageUrl = new URL(ogImage, SITE.url).href;
+
+// Force noindex on the *.pages.dev preview host until cutover by setting
+// PUBLIC_NOINDEX=true in the preview environment. Production leaves it unset.
+const previewNoindex = import.meta.env.PUBLIC_NOINDEX === 'true';
+const robots = noindex || previewNoindex ? 'noindex, nofollow' : 'index, follow';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: SITE.name,
+  url: SITE.url,
+  logo: new URL('/brand/logo-primary-circle-green.png', SITE.url).href,
+  description: SITE.description,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '245 SW Twin Oaks Circle',
+    addressLocality: 'Corvallis',
+    addressRegion: 'OR',
+    postalCode: '97333',
+    addressCountry: 'US',
+  },
+  sameAs: [
+    'https://www.facebook.com/sparrowcorvallis',
+    'https://www.instagram.com/sparrowcorvallis/',
+  ],
+};
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {/* Set the theme before first paint to avoid a flash. Stored choice wins; otherwise follow the OS. */}
+  <script is:inline>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.classList.toggle('dark', dark);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content={robots} />
+  <link rel="canonical" href={canonical} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImageUrl} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageUrl} />
+
+  <meta name="theme-color" content="#1E4D30" />
+  <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+</head>

@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Hero from '../components/Hero.astro';
+import StatBand from '../components/StatBand.astro';
+import ProgramCard from '../components/ProgramCard.astro';
+import Testimonial from '../components/Testimonial.astro';
+import CTABand from '../components/CTABand.astro';
+import DonateButtons from '../components/DonateButtons.astro';
+
+const stats = await getCollection('stats');
+const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+const programHref: Record<string, string> = {
+  'twin-oaks': '/twin-oaks',
+  'life-change': '/life-change-program',
+};
+
+const featured = (await getCollection('testimonials')).filter((t) => t.data.featured);
+const firstFeatured = featured[0];
+const FeaturedContent = firstFeatured ? (await firstFeatured.render()).Content : null;
+---
+
+<BaseLayout>
+  <Hero
+    eyebrow="Sparrow · Corvallis, Oregon"
+    title="Where hope is found."
+    subtitle="Sparrow walks families out of homelessness through affordable housing at Twin Oaks and the year-long LifeChange Program — surrounded by a community that believes in them."
+    primaryCta={{ label: 'Give today', href: '/give' }}
+    secondaryCta={{ label: 'Get involved', href: '/get-involved' }}
+  />
+
+  <Section bg="white">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Families in our community are facing homelessness</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">And not one of them is overlooked.</p>
+    </div>
+    <div class="mt-12"><StatBand stats={stats} /></div>
+  </Section>
+
+  <Section bg="mist">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Two programs, one mission</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">
+        Stable housing and whole-person support — because lasting change needs both.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      {programs.map((p) => <ProgramCard program={p} href={programHref[p.slug] ?? '/'} />)}
+    </div>
+  </Section>
+
+  {
+    FeaturedContent && firstFeatured && (
+      <Section bg="white">
+        <div class="mx-auto max-w-2xl">
+          <Testimonial attribution={firstFeatured.data.attribution}>
+            <FeaturedContent />
+          </Testimonial>
+        </div>
+      </Section>
+    )
+  }
+
+  <CTABand
+    title="Be the reason a family finds hope"
+    text="Your gift provides stable housing and the mentorship that helps families rebuild."
+  >
+    <DonateButtons class="justify-center" />
+  </CTABand>
+</BaseLayout>

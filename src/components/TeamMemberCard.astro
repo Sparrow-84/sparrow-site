@@ -1,0 +1,33 @@
+---
+import { photo } from '../lib/media';
+
+interface Props {
+  name: string;
+  role: string;
+  image?: string;
+}
+const { name, role, image } = Astro.props;
+const src = photo(image);
+const initial = name.trim().charAt(0).toUpperCase();
+---
+
+<div class="text-center">
+  {
+    src ? (
+      <img
+        src={src}
+        alt={name}
+        width="112"
+        height="112"
+        class="mx-auto h-28 w-28 rounded-full object-cover shadow-card"
+        loading="lazy"
+      />
+    ) : (
+      <div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-sparrow-green" aria-hidden="true">
+        <span class="font-serif text-3xl font-semibold text-sparrow-gold">{initial}</span>
+      </div>
+    )
+  }
+  <h3 class="mt-3 font-serif text-base font-semibold">{name}</h3>
+  <p class="text-sm text-sparrow-gray dark:text-dark-muted">{role}</p>
+</div>

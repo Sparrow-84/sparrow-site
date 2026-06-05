@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { GIVEBUTTER, SHOP_URL } from '../consts';
+---
+
+<BaseLayout
+  title="Give"
+  description="Your gift helps Corvallis families move from homelessness to stability and hope."
+>
+  <Section bg="sage">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Your gift changes a family's story</h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        Every dollar helps provide stable housing and the mentorship that walks families toward
+        lasting change.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="flex flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule p-8 shadow-card">
+        <h2 class="text-xl font-semibold">Twin Oaks Community Center</h2>
+        <p class="mt-3 flex-1 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+          Help build a neighborhood gathering space at Twin Oaks — Sparrow offices, a large
+          gathering room, a laundromat, and a warming and cooling center for residents.
+        </p>
+        <a href={GIVEBUTTER.communityCenter} class="btn-gold mt-6" target="_blank" rel="noopener">
+          Give to the Community Center
+        </a>
+      </div>
+
+      <div class="flex flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule p-8 shadow-card">
+        <h2 class="text-xl font-semibold">The Hope Fund</h2>
+        <p class="mt-3 flex-1 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+          When a neighbor at Twin Oaks faces an emergency — a fire, an illness, a heating crisis —
+          the Hope Fund helps prevent homelessness before it starts.
+        </p>
+        <a href={GIVEBUTTER.hopeFund} class="btn-primary mt-6" target="_blank" rel="noopener">
+          Give to the Hope Fund
+        </a>
+      </div>
+    </div>
+
+    <p class="mx-auto mt-8 max-w-2xl text-center text-sm text-sparrow-gray dark:text-dark-muted">
+      Sparrow Inc. is a 501(c)(3) nonprofit, and gifts are tax-deductible. You can also support our
+      work by shopping <a class="text-sparrow-green dark:text-dark-heading underline" href={SHOP_URL}>Sparrow merch</a> —
+      100% of profits support the mission.
+    </p>
+  </Section>
+</BaseLayout>

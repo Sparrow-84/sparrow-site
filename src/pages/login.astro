@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import PortalLoginCard from '../components/PortalLoginCard.astro';
+import { PORTALS } from '../consts';
+---
+
+<BaseLayout title="Log in" description="Sign in to a Sparrow portal." noindex={true}>
+  <Section bg="sage">
+    <div class="mx-auto max-w-2xl text-center">
+      <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Sparrow portals</h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        Sign in to the portal you use. New portals are on the way — this is where you'll log in.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="grid gap-6 md:grid-cols-3">
+      {PORTALS.map((p) => <PortalLoginCard label={p.label} blurb={p.blurb} url={p.url} live={p.live} />)}
+    </div>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+interface Props {
+  as?: string;
+  bg?: 'white' | 'mist' | 'sage' | 'cream' | 'green';
+  id?: string;
+  class?: string;
+}
+
+const { as = 'section', bg = 'white', id, class: className = '' } = Astro.props;
+
+const bgMap: Record<string, string> = {
+  white: 'bg-white dark:bg-dark-bg',
+  mist: 'bg-sparrow-mist dark:bg-dark-surface',
+  sage: 'bg-sparrow-sage dark:bg-dark-surface',
+  cream: 'bg-sparrow-cream dark:bg-dark-surface',
+  green: 'bg-sparrow-green text-white',
+};
+
+const Tag = as as any;
+---
+
+<Tag id={id} class={bgMap[bg]}>
+  <div class={`mx-auto max-w-content px-4 py-14 sm:px-6 sm:py-20 ${className}`}>
+    <slot />
+  </div>
+</Tag>
