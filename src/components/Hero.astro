@@ -7,10 +7,13 @@ interface Props {
   title: string;
   subtitle?: string;
   image?: string;
+  /** When set, an autoplaying (muted, looping, silent) clip fills the panel instead of the photo. */
+  videoSrc?: string;
+  videoLabel?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
 }
-const { eyebrow, title, subtitle, image, primaryCta, secondaryCta } = Astro.props;
+const { eyebrow, title, subtitle, image, videoSrc, videoLabel, primaryCta, secondaryCta } = Astro.props;
 ---
 
 <section class="bg-sparrow-sage dark:bg-dark-surface">
@@ -28,6 +31,22 @@ const { eyebrow, title, subtitle, image, primaryCta, secondaryCta } = Astro.prop
         )
       }
     </div>
-    <ImagePanel src={photo(image)} ratio="aspect-[4/3]" label="Photo coming soon" eager />
+    {
+      videoSrc ? (
+        <video
+          class="aspect-video w-full rounded-2xl bg-sparrow-green object-cover shadow-card"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-label={videoLabel}
+        >
+          <source src={videoSrc} type="video/webm" />
+        </video>
+      ) : (
+        <ImagePanel src={photo(image)} ratio="aspect-[4/3]" label="Photo coming soon" eager />
+      )
+    }
   </div>
 </section>

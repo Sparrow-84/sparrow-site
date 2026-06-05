@@ -8,7 +8,6 @@ import ProgramCard from '../components/ProgramCard.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CTABand from '../components/CTABand.astro';
 import DonateButtons from '../components/DonateButtons.astro';
-import VideoPanel from '../components/VideoPanel.astro';
 
 const stats = await getCollection('stats');
 const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
@@ -29,20 +28,9 @@ const FeaturedContent = firstFeatured ? (await firstFeatured.render()).Content :
     subtitle="Sparrow walks families out of homelessness through affordable housing at Twin Oaks and the year-long LifeChange Program — surrounded by a community that believes in them."
     primaryCta={{ label: 'Give today', href: '/give' }}
     secondaryCta={{ label: 'Get involved', href: '/get-involved' }}
+    videoSrc="/media/sparrow-web-clip.webm"
+    videoLabel="A short clip from Sparrow"
   />
-
-  <Section bg="mist">
-    <div class="mx-auto mb-10 max-w-2xl text-center">
-      <h2 class="text-2xl font-semibold sm:text-3xl">A glimpse of Sparrow</h2>
-      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">Press play for a short look at our community.</p>
-    </div>
-    <VideoPanel
-      src="/media/sparrow-web-clip.webm"
-      poster="/media/sparrow-web-clip-poster.svg"
-      caption="Watch · 19 sec"
-      label="Play a short clip from Sparrow"
-    />
-  </Section>
 
   <Section bg="white">
     <div class="mx-auto max-w-3xl text-center">
