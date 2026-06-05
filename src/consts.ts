@@ -90,11 +90,10 @@ export const PORTALS = [
     key: 'participant',
     label: 'Participant Portal',
     blurb: 'For LifeChange families to track curriculum, assignments, and progress.',
-    // App built (sparrow-lcp-portal). GO-LIVE: after the first Cloudflare Pages deploy,
-    // flip `live` to true. Swap to https://portal.sparrowinc.org once the custom domain
-    // is set up; until then this prototype host is the deploy target.
+    // LIVE on Cloudflare Pages. Swap to https://portal.sparrowinc.org once the custom
+    // domain is set up (then update Supabase Auth → URL Configuration to match).
     url: 'https://sparrow-lcp-portal.pages.dev',
-    live: false,
+    live: true,
   },
   {
     key: 'volunteer',
