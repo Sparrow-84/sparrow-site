@@ -82,8 +82,9 @@ export const PORTALS = [
     key: 'staff',
     label: 'Staff Portal',
     blurb: "For Sparrow staff. You'll sign in with your Sparrow Google account.",
-    url: 'https://staff.sparrowinc.org',
-    live: false,
+    // Prototype host; swap to https://staff.sparrowinc.org once the custom domain is set up.
+    url: 'https://sparrow-staff-portal.pages.dev',
+    live: true,
   },
   {
     key: 'participant',
