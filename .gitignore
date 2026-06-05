@@ -20,3 +20,6 @@ yarn-error.log*
 # macOS / Windows cruft
 .DS_Store
 Thumbs.db
+
+# raw asset staging — source media lives here before it's processed into public/
+ingest/
