@@ -10,10 +10,10 @@ touches the public domain — do it last.
 ## 1. Create the GitHub repo and push
 
 The local repo is already initialized with a first commit. Create an **empty**
-GitHub repo named `sparrow-website` (no README/license), then:
+GitHub repo named `sparrow-site` (no README/license), then:
 
 ```bash
-git remote add origin https://github.com/<org-or-user>/sparrow-website.git
+git remote add origin https://github.com/Sparrow-84/sparrow-site.git
 git branch -M main
 git push -u origin main
 ```
@@ -23,13 +23,13 @@ git push -u origin main
 
 ## 2. Connect Cloudflare Pages
 
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → pick `sparrow-website`.
+1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → pick `sparrow-site`.
 2. Build settings:
    - **Framework preset:** Astro
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
    - **Environment variable:** `NODE_VERSION = 20`
-3. Save & Deploy. You'll get a live preview URL like `sparrow-website.pages.dev`.
+3. Save & Deploy. You'll get a live preview URL like `sparrow-site-3sq.pages.dev`.
 4. Confirm the pipeline: push any small commit to `main` and watch it auto-deploy.
    **This is the Phase A "prove the pipeline" gate — don't move on until it's green.**
 
