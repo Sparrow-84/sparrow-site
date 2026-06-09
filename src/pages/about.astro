@@ -12,7 +12,10 @@ const values = await Promise.all(
   valueEntries.map(async (v) => ({ title: v.data.title, Content: (await v.render()).Content }))
 );
 
-const team = (await getCollection('team')).filter((t) => t.data.public);
+const teamEntries = (await getCollection('team')).filter((t) => t.data.public);
+const team = await Promise.all(
+  teamEntries.map(async (m) => ({ data: m.data, Content: (await m.render()).Content }))
+);
 const leadership = team
   .filter((t) => t.data.group === 'leadership')
   .sort((a, b) => a.data.order - b.data.order);
@@ -110,14 +113,18 @@ const board = team
       <p class="mt-3 text-sparrow-gray dark:text-dark-muted">The people walking alongside families every day.</p>
     </div>
     <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
-      {leadership.map((m) => <TeamMemberCard name={m.data.name} role={m.data.role} image={m.data.photo} />)}
+      {leadership.map(({ data, Content }) => (
+        <TeamMemberCard name={data.name} role={data.role} image={data.photo}><Content /></TeamMemberCard>
+      ))}
     </div>
     {
       board.length > 0 && (
         <Fragment>
           <h3 class="mt-14 text-center text-lg font-semibold">Board of Directors</h3>
           <div class="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
-            {board.map((m) => <TeamMemberCard name={m.data.name} role={m.data.role} image={m.data.photo} />)}
+            {board.map(({ data, Content }) => (
+              <TeamMemberCard name={data.name} role={data.role} image={data.photo}><Content /></TeamMemberCard>
+            ))}
           </div>
         </Fragment>
       )

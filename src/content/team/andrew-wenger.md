@@ -5,4 +5,4 @@ group: "leadership"
 order: 1
 public: true
 ---
-In 2016, Andrew — a leader at The Hive Church in Corvallis — had a dream that became Sparrow: a family in crisis surrounded by a community that refused to let them fall.
+Andrew founded Sparrow out of a vision to serve people beyond the walls of the church and become an agent of change in the local community. A contractor by trade, he leads the organization with a passion for building up people and healthy communities — driven by the conviction that every person can thrive and know the incredible value God has for them.

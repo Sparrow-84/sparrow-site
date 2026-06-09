@@ -30,4 +30,7 @@ const initial = name.trim().charAt(0).toUpperCase();
   }
   <h3 class="mt-3 font-serif text-base font-semibold">{name}</h3>
   <p class="text-sm text-sparrow-gray dark:text-dark-muted">{role}</p>
+  {Astro.slots.has('default') && (
+    <div class="mt-3 text-sm leading-relaxed text-sparrow-ink/80 dark:text-dark-text/80 text-left"><slot /></div>
+  )}
 </div>
