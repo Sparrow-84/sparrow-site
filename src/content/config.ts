@@ -29,6 +29,7 @@ const team = defineCollection({
     role: z.string(),
     group: z.enum(['leadership', 'board']).default('leadership'),
     photo: z.string().optional(),
+    photoPosition: z.string().optional(),
     order: z.number().default(0),
     public: z.boolean().default(true), // set false to omit from the public page
   }),

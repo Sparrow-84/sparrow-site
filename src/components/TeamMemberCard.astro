@@ -5,9 +5,11 @@ interface Props {
   name: string;
   role: string;
   image?: string;
+  photoPosition?: string;
 }
-const { name, role, image } = Astro.props;
+const { name, role, image, photoPosition } = Astro.props;
 const src = photo(image);
+const imgStyle = photoPosition ? `object-position: ${photoPosition}` : undefined;
 const initial = name.trim().charAt(0).toUpperCase();
 const hasBio = Astro.slots.has('default');
 const dialogId = `bio-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
@@ -27,6 +29,7 @@ const dialogId = `bio-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
           width="112"
           height="112"
           class="mx-auto h-28 w-28 rounded-full object-cover shadow-card transition-transform duration-200 group-hover:scale-105"
+          style={imgStyle}
           loading="lazy"
         />
       ) : (
@@ -50,6 +53,7 @@ const dialogId = `bio-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
           width="112"
           height="112"
           class="mx-auto h-28 w-28 rounded-full object-cover shadow-card"
+          style={imgStyle}
           loading="lazy"
         />
       ) : (
@@ -90,6 +94,7 @@ const dialogId = `bio-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
           width="96"
           height="96"
           class="mx-auto h-24 w-24 rounded-full object-cover shadow-card"
+          style={imgStyle}
         />
       ) : (
         <div
