@@ -111,5 +111,6 @@ export const NAV = [
   { label: 'LifeChange', href: '/life-change-program' },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'Give', href: '/give' },
+  { label: 'Merch', href: '/shop' },
   { label: 'Contact', href: '/contact' },
 ];
