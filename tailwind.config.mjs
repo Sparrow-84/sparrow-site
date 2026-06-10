@@ -25,7 +25,7 @@ export default {
           rule: '#2B3D33', // dividers, borders
           text: '#E6ECE8', // primary body text (replaces sparrow-ink)
           muted: '#A6B0AA', // secondary text (replaces sparrow-gray)
-          heading: '#86BD9C', // headings + green links (replaces sparrow-green)
+          heading: '#A2B5AC', // headings + green links (replaces sparrow-green)
         },
       },
       fontFamily: {
