@@ -20,7 +20,7 @@ applicationSteps:
   - title: "Welcome home"
     detail: "On approval and availability, we welcome you to the community."
 gallery:
-  - "/images/twin-oaks-sign.webp"
+  - "/images/corvallis-golden-hour.webp"
   - "/images/twin-oaks-home.webp"
   - "/images/twin-oaks/hero.webp"
 order: 1
