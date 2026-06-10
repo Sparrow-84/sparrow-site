@@ -6,8 +6,8 @@ import PhotoGallery from '../components/PhotoGallery.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import { photo } from '../lib/media';
 
-const program = await getEntry('programs', 'twin-oaks');
-if (!program) throw new Error('Missing program entry: twin-oaks');
+const program = await getEntry('community', 'twin-oaks');
+if (!program) throw new Error('Missing community entry: twin-oaks');
 const { Content } = await program.render();
 const d = program.data;
 const faqs = (await getCollection('faqs')).filter((f) => f.data.program === 'twin-oaks');

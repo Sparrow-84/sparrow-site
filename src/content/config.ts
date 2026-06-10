@@ -34,7 +34,26 @@ const team = defineCollection({
   }),
 });
 
-// Programs (Twin Oaks, LifeChange). Body is the long description (markdown).
+// Housing communities Sparrow owns and operates. Body is the long description (markdown).
+const community = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    tagline: z.string(),
+    summary: z.string(),
+    heroImage: z.string().optional(),
+    contactEmail: z.string(),
+    contactPhone: z.string().optional(),
+    eligibility: z.array(z.string()).default([]),
+    applicationSteps: z
+      .array(z.object({ title: z.string(), detail: z.string() }))
+      .default([]),
+    gallery: z.array(z.string()).default([]),
+    order: z.number().default(0),
+  }),
+});
+
+// Programs (LifeChange). Body is the long description (markdown).
 const programs = defineCollection({
   type: 'content',
   schema: z.object({
@@ -74,4 +93,4 @@ const faqs = defineCollection({
   }),
 });
 
-export const collections = { stats, values, team, programs, testimonials, faqs };
+export const collections = { stats, values, team, community, programs, testimonials, faqs };

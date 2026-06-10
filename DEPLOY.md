@@ -66,7 +66,7 @@ before launch (search the code for `CONFIRM` / `TODO` comments):
 
 - [ ] **Live inboxes** — which `@sparrowinc.org` addresses are real, monitored inboxes? `info@` is currently an *alias*. Update `CONTACT` in `src/consts.ts`. (`twinoaks@` / `lifechange@` need confirming too.)
 - [ ] **Statement of faith** — replace the placeholder paragraph on `/about` with Sparrow's exact wording.
-- [ ] **Twin Oaks eligibility** — confirm the 60% AMI criteria, any application fee, and the application steps before publishing (fair-housing sensitivity). Edit `src/content/programs/twin-oaks.md`.
+- [ ] **Twin Oaks eligibility** — confirm the 60% AMI criteria, any application fee, and the application steps before publishing (fair-housing sensitivity). Edit `src/content/community/twin-oaks.md`.
 - [ ] **Team** — confirm roles, and which staff/board members consent to a public listing + photo. Board members default to `public: false` in `src/content/team/`.
 - [ ] **Testimonials** — confirm attribution and ongoing consent for the quotes in `src/content/testimonials/`.
 - [ ] **Photos** — add real images under `public/images/`, then set `PHOTOS_READY = true` in `src/lib/media.ts`.
