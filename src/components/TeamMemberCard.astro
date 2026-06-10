@@ -9,28 +9,130 @@ interface Props {
 const { name, role, image } = Astro.props;
 const src = photo(image);
 const initial = name.trim().charAt(0).toUpperCase();
+const hasBio = Astro.slots.has('default');
+const dialogId = `bio-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 ---
 
 <div class="text-center">
-  {
-    src ? (
-      <img
-        src={src}
-        alt={name}
-        width="112"
-        height="112"
-        class="mx-auto h-28 w-28 rounded-full object-cover shadow-card"
-        loading="lazy"
-      />
-    ) : (
-      <div class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-sparrow-green" aria-hidden="true">
-        <span class="font-serif text-3xl font-semibold text-sparrow-gold">{initial}</span>
-      </div>
-    )
-  }
-  <h3 class="mt-3 font-serif text-base font-semibold">{name}</h3>
-  <p class="text-sm text-sparrow-gray dark:text-dark-muted">{role}</p>
-  {Astro.slots.has('default') && (
-    <div class="mt-3 text-sm leading-relaxed text-sparrow-ink/80 dark:text-dark-text/80 text-left"><slot /></div>
+  {hasBio ? (
+    <button
+      class="group w-full rounded-xl text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-sparrow-gold focus-visible:ring-offset-2"
+      data-opens={dialogId}
+      aria-haspopup="dialog"
+    >
+      {src ? (
+        <img
+          src={src}
+          alt={name}
+          width="112"
+          height="112"
+          class="mx-auto h-28 w-28 rounded-full object-cover shadow-card transition-transform duration-200 group-hover:scale-105"
+          loading="lazy"
+        />
+      ) : (
+        <div
+          class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-sparrow-green transition-transform duration-200 group-hover:scale-105"
+          aria-hidden="true"
+        >
+          <span class="font-serif text-3xl font-semibold text-sparrow-gold">{initial}</span>
+        </div>
+      )}
+      <h3 class="mt-3 font-serif text-base font-semibold">{name}</h3>
+      <p class="text-sm text-sparrow-gray dark:text-dark-muted">{role}</p>
+      <p class="mt-1 text-xs font-medium text-sparrow-gold">Read bio →</p>
+    </button>
+  ) : (
+    <>
+      {src ? (
+        <img
+          src={src}
+          alt={name}
+          width="112"
+          height="112"
+          class="mx-auto h-28 w-28 rounded-full object-cover shadow-card"
+          loading="lazy"
+        />
+      ) : (
+        <div
+          class="mx-auto flex h-28 w-28 items-center justify-center rounded-full bg-sparrow-green"
+          aria-hidden="true"
+        >
+          <span class="font-serif text-3xl font-semibold text-sparrow-gold">{initial}</span>
+        </div>
+      )}
+      <h3 class="mt-3 font-serif text-base font-semibold">{name}</h3>
+      <p class="text-sm text-sparrow-gray dark:text-dark-muted">{role}</p>
+    </>
   )}
 </div>
+
+{hasBio && (
+  <dialog
+    id={dialogId}
+    data-bio-dialog
+    class="w-full max-w-sm rounded-2xl border-0 bg-white p-0 shadow-xl dark:bg-dark-surface"
+  >
+    <div class="relative max-h-[90vh] overflow-y-auto p-8">
+      <button
+        class="absolute right-4 top-4 rounded-full p-1 text-sparrow-gray transition-colors hover:text-sparrow-ink dark:text-dark-muted dark:hover:text-dark-text"
+        data-closes={dialogId}
+        aria-label="Close"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+
+      {src ? (
+        <img
+          src={src}
+          alt={name}
+          width="96"
+          height="96"
+          class="mx-auto h-24 w-24 rounded-full object-cover shadow-card"
+        />
+      ) : (
+        <div
+          class="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-sparrow-green"
+          aria-hidden="true"
+        >
+          <span class="font-serif text-3xl font-semibold text-sparrow-gold">{initial}</span>
+        </div>
+      )}
+
+      <h3 class="mt-4 text-center font-serif text-xl font-semibold">{name}</h3>
+      <p class="text-center text-sm text-sparrow-gray dark:text-dark-muted">{role}</p>
+      <div class="mt-4 text-sm leading-relaxed text-sparrow-ink/80 dark:text-dark-text/80">
+        <slot />
+      </div>
+    </div>
+  </dialog>
+)}
+
+<style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-opens]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-opens');
+      (document.getElementById(id) as HTMLDialogElement)?.showModal();
+    });
+  });
+
+  document.querySelectorAll('[data-closes]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-closes');
+      (document.getElementById(id) as HTMLDialogElement)?.close();
+    });
+  });
+
+  document.querySelectorAll('[data-bio-dialog]').forEach((dialog) => {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) (dialog as HTMLDialogElement).close();
+    });
+  });
+</script>
