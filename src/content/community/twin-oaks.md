@@ -21,8 +21,8 @@ applicationSteps:
     detail: "On approval and availability, we welcome you to the community."
 gallery:
   - "/images/twin-oaks/aerial.jpg"
+  - "/images/twin-oaks/community-event.jpg"
   - "/images/twin-oaks-home.webp"
-  - "/images/twin-oaks/hero.webp"
 order: 1
 ---
 Twin Oaks Community is the affordable housing community Sparrow owns and operates in South Corvallis. Through a grant from the State of Oregon, Sparrow stewards 61 residential sites where neighbors find stability, connection, and room to flourish.
