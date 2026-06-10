@@ -3,15 +3,16 @@ import { GIVEBUTTER } from '../consts';
 
 interface Props {
   class?: string;
+  onDark?: boolean;
 }
-const { class: className = '' } = Astro.props;
+const { class: className = '', onDark = false } = Astro.props;
 ---
 
 <div class={`flex flex-wrap gap-3 ${className}`}>
   <a href={GIVEBUTTER.communityCenter} class="btn-gold" target="_blank" rel="noopener">
     Give to the Community Center
   </a>
-  <a href={GIVEBUTTER.hopeFund} class="btn-outline" target="_blank" rel="noopener">
+  <a href={GIVEBUTTER.hopeFund} class={`btn-outline${onDark ? ' !border-white !text-white hover:!bg-white/10' : ''}`} target="_blank" rel="noopener">
     Give to the Hope Fund
   </a>
 </div>
