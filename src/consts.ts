@@ -48,7 +48,7 @@ export const SOCIAL = {
 export const CONTACT = {
   general: { email: 'info@sparrowinc.org', label: 'General' },
   twinOaks: { email: 'twinoaks@sparrowinc.org', phone: '(541) 753-3334', label: 'Twin Oaks housing' },
-  lifeChange: { email: 'lifechange@sparrowinc.org', phone: '971-209-2450', label: 'LifeChange Program' },
+  lifeChange: { email: 'lifechange@sparrowinc.org', phone: '(971) 209-2450', label: 'LifeChange Program' },
 };
 
 /**

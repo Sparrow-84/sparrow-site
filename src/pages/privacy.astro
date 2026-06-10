@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { ORG, CONTACT } from '../consts';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How Sparrow collects, uses, and protects information you share with us."
+  noindex={false}
+>
+  <Section bg="sage">
+    <div class="mx-auto max-w-3xl">
+      <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">Legal</p>
+      <h1 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">Privacy Policy</h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        Plain-language explanation of what information we collect, why, and how you can control it.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="mx-auto max-w-3xl space-y-10 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+
+      <div>
+        <h2 class="text-xl font-semibold">Who we are</h2>
+        <p class="mt-3">
+          Sparrow Inc. is a 501(c)(3) nonprofit organization based in Corvallis, Oregon
+          ({ORG.address.street}, {ORG.address.city}, {ORG.address.state} {ORG.address.zip}).
+          This policy covers information collected through our public website (sparrowinc.org).
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold">What we collect</h2>
+        <p class="mt-3">We only collect information you give us directly:</p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>
+            <strong>Newsletter signups</strong> — your email address when you subscribe to The Sparrow Monthly.
+          </li>
+          <li>
+            <strong>Contact form submissions</strong> — your name, email, and message when you reach out through our contact page.
+          </li>
+        </ul>
+        <p class="mt-4">
+          We do not use tracking cookies, advertising pixels, or analytics software on this site.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold">How we use it</h2>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>To respond to your inquiry.</li>
+          <li>To send you The Sparrow Monthly if you subscribed — and only that.</li>
+          <li>We do not sell, rent, or trade your information to anyone.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold">Third-party processors</h2>
+        <p class="mt-3">
+          Two services handle data on our behalf. We do not control their infrastructure, but
+          both are reputable processors with their own privacy policies:
+        </p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>
+            <strong>Web3Forms</strong> — routes contact form and newsletter submissions to our
+            staff inboxes. Submissions are forwarded and not stored long-term on their platform.
+          </li>
+          <li>
+            <strong>GiveButter</strong> — processes donations. Any financial or personal
+            information entered during a donation is governed by GiveButter's own privacy policy,
+            not this one.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold">Your choices</h2>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>
+            <strong>Unsubscribe</strong> — every newsletter email includes an unsubscribe link.
+            Clicking it removes you immediately.
+          </li>
+          <li>
+            <strong>Request deletion</strong> — email us at{' '}
+            <a href={`mailto:${CONTACT.general.email}`} class="underline hover:text-sparrow-green">
+              {CONTACT.general.email}
+            </a>{' '}
+            and we will remove your information from our records.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-semibold">Updates to this policy</h2>
+        <p class="mt-3">
+          If we add new services or change how we handle data, we'll update this page. We won't
+          make changes that reduce your rights without letting you know.
+        </p>
+      </div>
+
+      <div class="border-t border-sparrow-rule pt-8 dark:border-dark-rule">
+        <h2 class="text-xl font-semibold">Questions?</h2>
+        <p class="mt-3">
+          Reach us at{' '}
+          <a href={`mailto:${CONTACT.general.email}`} class="underline hover:text-sparrow-green">
+            {CONTACT.general.email}
+          </a>
+          {' '}or by mail at {ORG.address.street}, {ORG.address.city}, {ORG.address.state} {ORG.address.zip}.
+        </p>
+      </div>
+
+    </div>
+  </Section>
+</BaseLayout>
