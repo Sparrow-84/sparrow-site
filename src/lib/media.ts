@@ -4,7 +4,7 @@
  * broken <img> tags. Flip PHOTOS_READY to true once photos are in place and the
  * frontmatter image paths actually resolve.
  */
-export const PHOTOS_READY = false;
+export const PHOTOS_READY = true;
 
 export function photo(path?: string): string | undefined {
   return PHOTOS_READY && path ? path : undefined;

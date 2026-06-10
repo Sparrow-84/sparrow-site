@@ -3,7 +3,7 @@ title: "Twin Oaks Community"
 slug: "twin-oaks"
 tagline: "Affordable, dignified housing in South Corvallis — a stable foundation for lasting change."
 summary: "A 61-site community Sparrow owns and operates in South Corvallis, offering affordable, dignified housing as the foundation families need to rebuild stability."
-heroImage: "/images/twin-oaks/hero.jpg"
+heroImage: "/images/twin-oaks/hero.webp"
 contactEmail: "twinoaks@sparrowinc.org" # CONFIRM live, monitored inbox before launch
 contactPhone: "(541) 753-3334"
 eligibility:

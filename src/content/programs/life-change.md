@@ -3,7 +3,7 @@ title: "The LifeChange Program"
 slug: "life-change"
 tagline: "A year-long, whole-person journey out of homelessness — walked alongside a community that believes in you."
 summary: "A year-long holistic program that walks single parents and families facing homelessness toward healing, stability, and lasting transformation."
-heroImage: "/images/life-change/hero.jpg"
+heroImage: "/images/life-change/hero.webp"
 contactEmail: "lifechange@sparrowinc.org" # CONFIRM live, monitored inbox before launch
 contactPhone: "971-209-2450"
 eligibility:

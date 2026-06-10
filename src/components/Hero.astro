@@ -14,6 +14,7 @@ interface Props {
   secondaryCta?: { label: string; href: string };
 }
 const { eyebrow, title, subtitle, image, videoSrc, videoLabel, primaryCta, secondaryCta } = Astro.props;
+const posterSrc = image ? photo(image) : undefined;
 ---
 
 <section class="bg-sparrow-sage dark:bg-dark-surface">
@@ -41,6 +42,7 @@ const { eyebrow, title, subtitle, image, videoSrc, videoLabel, primaryCta, secon
           playsinline
           preload="auto"
           aria-label={videoLabel}
+          poster={posterSrc}
         >
           <source src={videoSrc} type="video/webm" />
         </video>
