@@ -10,7 +10,9 @@ import CTABand from '../components/CTABand.astro';
 import DonateButtons from '../components/DonateButtons.astro';
 
 const stats = await getCollection('stats');
-const programs = (await getCollection('programs')).sort((a, b) => a.data.order - b.data.order);
+const communityEntries = await getCollection('community');
+const programEntries = await getCollection('programs');
+const allOfferings = [...communityEntries, ...programEntries].sort((a, b) => a.data.order - b.data.order);
 const programHref: Record<string, string> = {
   'twin-oaks': '/twin-oaks',
   'life-change': '/life-change-program',
@@ -43,13 +45,13 @@ const FeaturedContent = firstFeatured ? (await firstFeatured.render()).Content :
 
   <Section bg="mist">
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-2xl font-semibold sm:text-3xl">Two programs, one mission</h2>
+      <h2 class="text-2xl font-semibold sm:text-3xl">One mission, two ways to serve</h2>
       <p class="mt-3 text-sparrow-gray dark:text-dark-muted">
         Stable housing and whole-person support — because lasting change needs both.
       </p>
     </div>
     <div class="mt-10 grid gap-6 md:grid-cols-2">
-      {programs.map((p) => <ProgramCard program={p} href={programHref[p.slug] ?? '/'} />)}
+      {allOfferings.map((p) => <ProgramCard program={p} href={programHref[p.slug] ?? '/'} />)}
     </div>
   </Section>
 

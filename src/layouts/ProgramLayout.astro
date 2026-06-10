@@ -9,9 +9,10 @@ interface Props {
   programTitle: string;
   tagline: string;
   heroImage?: string;
+  eyebrow?: string;
 }
 
-const { title, description, programTitle, tagline, heroImage } = Astro.props;
+const { title, description, programTitle, tagline, heroImage, eyebrow = 'A Sparrow Program' } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -19,7 +20,7 @@ const { title, description, programTitle, tagline, heroImage } = Astro.props;
   <section class="bg-sparrow-green text-white">
     <div class="mx-auto grid max-w-content items-center gap-8 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
       <div>
-        <p class="font-sans text-sm uppercase tracking-wide text-sparrow-gold">A Sparrow Program</p>
+        <p class="font-sans text-sm uppercase tracking-wide text-sparrow-gold">{eyebrow}</p>
         <h1 class="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">{programTitle}</h1>
         <p class="mt-4 max-w-prose text-lg text-white/90">{tagline}</p>
       </div>

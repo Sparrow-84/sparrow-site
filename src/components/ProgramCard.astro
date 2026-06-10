@@ -4,7 +4,7 @@ import ImagePanel from './ImagePanel.astro';
 import { photo } from '../lib/media';
 
 interface Props {
-  program: CollectionEntry<'programs'>;
+  program: CollectionEntry<'programs'> | CollectionEntry<'community'>;
   href: string;
 }
 const { program, href } = Astro.props;
