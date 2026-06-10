@@ -49,16 +49,6 @@ const orgSchema = {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {/* Set the theme before first paint to avoid a flash. Stored choice wins; otherwise follow the OS. */}
-  <script is:inline>
-    (function () {
-      try {
-        var stored = localStorage.getItem('theme');
-        var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.classList.toggle('dark', dark);
-      } catch (e) {}
-    })();
-  </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
