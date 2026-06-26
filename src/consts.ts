@@ -107,8 +107,8 @@ export const PORTALS = [
 /** Primary navigation. */
 export const NAV = [
   { label: 'About', href: '/about' },
-  { label: 'Twin Oaks', href: '/twin-oaks' },
   { label: 'LifeChange', href: '/life-change-program' },
+  { label: 'Twin Oaks', href: '/twin-oaks' },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'Contact', href: '/contact' },
   { label: 'Shop', href: '/shop' },
