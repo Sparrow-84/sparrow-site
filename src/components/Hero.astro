@@ -10,45 +10,87 @@ interface Props {
   /** When set, an autoplaying (muted, looping, silent) clip fills the panel instead of the photo. */
   videoSrc?: string;
   videoLabel?: string;
+  /** 'banner' = full-width video strip, text below. 'overlay' = text over video. Ignored when no videoSrc. */
+  videoLayout?: 'banner' | 'overlay';
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
 }
-const { eyebrow, title, subtitle, image, videoSrc, videoLabel, primaryCta, secondaryCta } = Astro.props;
+const { eyebrow, title, subtitle, image, videoSrc, videoLabel, videoLayout = 'banner', primaryCta, secondaryCta } = Astro.props;
 const posterSrc = image ? photo(image) : undefined;
 ---
 
-<section class="bg-sparrow-sage dark:bg-dark-surface">
-  <div class="mx-auto grid max-w-content items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
-    <div>
+{videoSrc && videoLayout === 'overlay' && (
+  <section class="relative w-full overflow-hidden h-screen bg-sparrow-green">
+    <video
+      class="absolute inset-0 w-full h-full object-cover object-top"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-label={videoLabel}
+      poster={posterSrc}
+    >
+      <source src={videoSrc} type="video/webm" />
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/10" />
+    <div class="relative z-10 flex h-full flex-col items-center justify-end px-4 pb-14 text-center sm:px-6">
+      {eyebrow && <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">{eyebrow}</p>}
+      <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl">{title}</h1>
+      {subtitle && <p class="mt-4 mx-auto max-w-prose text-lg text-white/80">{subtitle}</p>}
+      {(primaryCta || secondaryCta) && (
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          {primaryCta && <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>}
+          {secondaryCta && <a href={secondaryCta.href} class="inline-flex items-center justify-center rounded-2xl border border-white px-6 py-3 font-sans font-medium text-white transition hover:bg-white hover:text-sparrow-green">{secondaryCta.label}</a>}
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+{videoSrc && videoLayout === 'banner' && (
+  <section class="bg-sparrow-sage dark:bg-dark-surface">
+    <video
+      class="block w-full aspect-video object-cover"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-label={videoLabel}
+      poster={posterSrc}
+    >
+      <source src={videoSrc} type="video/webm" />
+    </video>
+    <div class="mx-auto max-w-content px-4 py-12 sm:px-6 text-center">
       {eyebrow && <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">{eyebrow}</p>}
       <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight sm:text-5xl">{title}</h1>
-      {subtitle && <p class="mt-5 max-w-prose text-lg text-sparrow-ink/80 dark:text-dark-text/80">{subtitle}</p>}
-      {
-        (primaryCta || secondaryCta) && (
+      {subtitle && <p class="mt-5 mx-auto max-w-prose text-lg text-sparrow-ink/80 dark:text-dark-text/80">{subtitle}</p>}
+      {(primaryCta || secondaryCta) && (
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          {primaryCta && <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>}
+          {secondaryCta && <a href={secondaryCta.href} class="btn-outline">{secondaryCta.label}</a>}
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+{!videoSrc && (
+  <section class="bg-sparrow-sage dark:bg-dark-surface">
+    <div class="mx-auto grid max-w-content items-center gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
+      <div>
+        {eyebrow && <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">{eyebrow}</p>}
+        <h1 class="mt-2 font-serif text-4xl font-semibold leading-tight sm:text-5xl">{title}</h1>
+        {subtitle && <p class="mt-5 max-w-prose text-lg text-sparrow-ink/80 dark:text-dark-text/80">{subtitle}</p>}
+        {(primaryCta || secondaryCta) && (
           <div class="mt-8 flex flex-wrap gap-3">
             {primaryCta && <a href={primaryCta.href} class="btn-primary">{primaryCta.label}</a>}
             {secondaryCta && <a href={secondaryCta.href} class="btn-outline">{secondaryCta.label}</a>}
           </div>
-        )
-      }
+        )}
+      </div>
+      <ImagePanel src={photo(image)} ratio="aspect-[4/3]" label="Photo coming soon" eager />
     </div>
-    {
-      videoSrc ? (
-        <video
-          class="aspect-video w-full rounded-2xl bg-sparrow-green object-cover shadow-card"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          aria-label={videoLabel}
-          poster={posterSrc}
-        >
-          <source src={videoSrc} type="video/webm" />
-        </video>
-      ) : (
-        <ImagePanel src={photo(image)} ratio="aspect-[4/3]" label="Photo coming soon" eager />
-      )
-    }
-  </div>
-</section>
+  </section>
+)}
