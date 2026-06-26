@@ -4,6 +4,7 @@ import ProgramLayout from '../layouts/ProgramLayout.astro';
 import Section from '../components/Section.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import Testimonial from '../components/Testimonial.astro';
+import PhotoGallery from '../components/PhotoGallery.astro';
 import { photo } from '../lib/media';
 
 const program = await getEntry('programs', 'life-change');
@@ -65,6 +66,15 @@ const testimonials = await Promise.all(
             <Testimonial attribution={attribution}><Body /></Testimonial>
           ))}
         </div>
+      </Section>
+    )
+  }
+
+  {
+    d.gallery.length > 0 && (
+      <Section bg="white">
+        <h2 class="text-2xl font-semibold sm:text-3xl">Life in the program</h2>
+        <div class="mt-8"><PhotoGallery images={d.gallery} /></div>
       </Section>
     )
   }
