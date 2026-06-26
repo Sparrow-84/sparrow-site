@@ -17,7 +17,7 @@ const { title, description, programTitle, tagline, heroImage, eyebrow = 'A Sparr
 
 <BaseLayout title={title} description={description}>
   <!-- Program hero -->
-  <section class="bg-sparrow-green text-white">
+  <section class="bg-sparrow-green-dark text-white">
     <div class="mx-auto grid max-w-content items-center gap-8 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24">
       <div>
         <p class="font-sans text-sm uppercase tracking-wide text-sparrow-gold">{eyebrow}</p>
@@ -40,15 +40,15 @@ const { title, description, programTitle, tagline, heroImage, eyebrow = 'A Sparr
   <slot />
 
   <!-- Shared closing CTA -->
-  <Section bg="cream">
+  <Section bg="green-dark">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-2xl font-semibold sm:text-3xl">Be part of the work</h2>
-      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">
+      <p class="mt-3 text-white/85">
         Every gift and every volunteer helps a family find stability and hope.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         <DonateButtons />
-        <a href="/get-involved" class="btn-outline">Volunteer</a>
+        <a href="/get-involved" class="inline-flex items-center justify-center rounded-2xl border border-white/60 px-6 py-3 font-sans font-medium text-white transition hover:bg-white/10">Volunteer</a>
       </div>
     </div>
   </Section>

@@ -64,7 +64,7 @@ const faqs = (await getCollection('faqs')).filter((f) => f.data.program === 'twi
 
   {
     faqs.length > 0 && (
-      <Section bg="mist">
+      <Section bg="sage">
         <h2 class="text-2xl font-semibold sm:text-3xl">Common questions</h2>
         <div class="mx-auto mt-8 max-w-3xl"><FAQAccordion faqs={faqs} /></div>
       </Section>

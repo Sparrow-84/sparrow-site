@@ -1,7 +1,7 @@
 ---
 interface Props {
   as?: string;
-  bg?: 'white' | 'mist' | 'sage' | 'cream' | 'green';
+  bg?: 'white' | 'mist' | 'sage' | 'cream' | 'green' | 'green-dark';
   id?: string;
   class?: string;
 }
@@ -14,6 +14,7 @@ const bgMap: Record<string, string> = {
   sage: 'bg-sparrow-sage dark:bg-dark-surface',
   cream: 'bg-sparrow-cream dark:bg-dark-surface',
   green: 'bg-sparrow-green text-white',
+  'green-dark': 'bg-sparrow-green-dark text-white',
 };
 
 const Tag = as as any;
