@@ -110,7 +110,6 @@ export const NAV = [
   { label: 'Twin Oaks', href: '/twin-oaks' },
   { label: 'LifeChange', href: '/life-change-program' },
   { label: 'Get Involved', href: '/get-involved' },
-  { label: 'Give', href: '/give' },
-  { label: 'Merch', href: '/shop' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Shop', href: '/shop' },
 ];
