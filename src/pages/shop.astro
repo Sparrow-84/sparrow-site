@@ -2,25 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 
-const BASE = 'https://www.sparrowinc.org';
-
-const products = [
-  { name: '"FREE" Midweight Crew Neck', price: '$37–$40', slug: 'free-design-midweight-crew-neck' },
-  { name: '"FREE" Unisex 100% Cotton T-Shirt', price: '$25–$30', slug: 'free-unisex-100-cotton-t-shirt' },
-  { name: '"FREE" Unisex Heavy Weight Hoodie', price: '$40–$45', slug: 'free-unisex-heavy-weight-hoodie' },
-  { name: 'Be Strong & Courageous – Unisex Softstyle Crewneck', price: '$37–$45', slug: 'unisex-midweight-softstyle-fleece-crewneck-sweatshirt-2' },
-  { name: 'Building a Legacy Unisex Heavyweight Sweatshirt', price: '$40–$45', slug: 'building-a-legacy-unisex-heavyweight-sweatshirt' },
-  { name: 'Building a Legacy Unisex Midweight Crewneck', price: '$37–$45', slug: 'building-a-legacy-unisex-midweight-crewneck' },
-  { name: 'Building Up Ruins Midweight Unisex Fleece Crewneck', price: '$37–$45', slug: 'building-up-ruins-midweight-unisex-fleece-crewneck' },
-  { name: 'Building Up Ruins Unisex Heavy Blend Sweatshirt', price: '$40–$45', slug: 'building-up-ruins-unisex-heavy-blend-sweatshirt' },
-  { name: 'Isaiah 61 Unisex Crewneck', price: '$37–$45', slug: 'isaiah-61-unisex-crewneck' },
-  { name: 'Let Hope Take Root Unisex Crewneck', price: '$37–$45', slug: 'let-hope-take-root-unisex-crewneck' },
-  { name: 'Oaks of Righteousness Hoodie Heavy Blend', price: '$40–$46', slug: 'oaks-of-righteousness-hoodie-heavy-blend' },
-  { name: 'RESTORE Unisex Hoodie', price: '$40–$45', slug: 'restore-unisex-hoodie' },
-  { name: 'Restore Unisex Midweight Softstyle Fleece Crewneck', price: '$37–$45', slug: 'restore-unisex-midweight-softstyle-fleece-crewneck' },
-  { name: 'Tell Your Story – Flame Unisex Crewneck', price: '$37–$43', slug: 'tell-your-story-flame-unisex-crewneck' },
-  { name: 'Tell Your Story Unisex Crewneck', price: '$37–$45', slug: 'tell-your-story-unisex-crewneck' },
-];
+const STORE_URL = 'https://sparrowmerch.printify.me';
 ---
 
 <BaseLayout
@@ -35,33 +17,17 @@ const products = [
         Every purchase directly supports Sparrow's housing and restoration work in Corvallis.
         100% of profits go to the mission.
       </p>
+      <div class="mt-8">
+        <a href={STORE_URL} target="_blank" rel="noopener" class="btn-primary inline-block">
+          Shop now
+        </a>
+      </div>
     </div>
   </Section>
 
   <Section bg="white">
-    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((p) => (
-        <li class="flex flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule shadow-card overflow-hidden">
-          <div class="flex flex-1 flex-col p-6">
-            <h2 class="font-serif text-lg font-semibold leading-snug">{p.name}</h2>
-            <p class="mt-2 text-sm text-sparrow-gray dark:text-dark-muted">{p.price}</p>
-            <div class="mt-auto pt-5">
-              <a
-                href={`${BASE}/product/${p.slug}/`}
-                target="_blank"
-                rel="noopener"
-                class="btn-primary block text-center text-sm"
-              >
-                Select options
-              </a>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
-
-    <p class="mx-auto mt-12 max-w-xl text-center text-sm text-sparrow-gray dark:text-dark-muted">
-      Orders are processed through our secure store at sparrowinc.org. Questions? Email{' '}
+    <p class="mx-auto max-w-xl text-center text-sm text-sparrow-gray dark:text-dark-muted">
+      Orders are processed securely through our store. Questions? Email{' '}
       <a class="underline hover:text-sparrow-green dark:hover:text-dark-heading" href="mailto:info@sparrowinc.org">
         info@sparrowinc.org
       </a>.
