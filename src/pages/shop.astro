@@ -23,6 +23,18 @@ const STORE_URL = 'https://sparrowmerch.printify.me';
         </a>
       </div>
     </div>
+
+    <ul class="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-3">
+      {[
+        { src: '/images/shop/sand-hoodie.webp', alt: 'Sparrow hoodie in sand' },
+        { src: '/images/shop/free-crewneck-navy.webp', alt: '"FREE" crewneck sweatshirt in navy' },
+        { src: '/images/shop/restore-tee-duo.webp', alt: '"Restore" t-shirt in forest green' },
+      ].map((p) => (
+        <li class="overflow-hidden rounded-2xl border border-sparrow-rule bg-white shadow-card dark:border-dark-rule">
+          <img src={p.src} alt={p.alt} width="600" height="600" class="aspect-square w-full object-cover" loading="lazy" />
+        </li>
+      ))}
+    </ul>
   </Section>
 
   <Section bg="white">
