@@ -39,4 +39,13 @@
   .field-input {
     @apply mt-1 block w-full rounded-lg border border-sparrow-rule bg-white px-3 py-2 text-sparrow-ink shadow-sm focus:border-sparrow-green focus:outline-none focus:ring-1 focus:ring-sparrow-green dark:border-dark-rule dark:bg-dark-surface dark:text-dark-text dark:placeholder-dark-muted dark:focus:border-dark-heading dark:focus:ring-dark-heading;
   }
+  .field-input-error {
+    @apply border-red-600 focus:border-red-600 focus:ring-red-600;
+  }
+  /* Red asterisk after a required field's label — pair with .field-input-error
+     and a "Required" caption (added by the form's validation script) on the input itself. */
+  .field-label-required::after {
+    content: ' *';
+    @apply text-red-600;
+  }
 }

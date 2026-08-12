@@ -2,7 +2,7 @@
 import { WEB3FORMS_KEY, SITE } from '../../consts';
 ---
 
-<form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+<form id="volunteer-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4" novalidate>
   <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
   <input type="hidden" name="subject" value="New volunteer interest from sparrowinc.org" />
   <input type="hidden" name="from_name" value="Sparrow Website" />
@@ -11,11 +11,11 @@ import { WEB3FORMS_KEY, SITE } from '../../consts';
 
   <div class="grid gap-4 sm:grid-cols-2">
     <div>
-      <label class="field-label" for="v-name">Your name</label>
+      <label class="field-label field-label-required" for="v-name">Your name</label>
       <input id="v-name" class="field-input" type="text" name="name" required autocomplete="name" />
     </div>
     <div>
-      <label class="field-label" for="v-email">Email</label>
+      <label class="field-label field-label-required" for="v-email">Email</label>
       <input id="v-email" class="field-input" type="email" name="email" required autocomplete="email" />
     </div>
   </div>
@@ -48,3 +48,52 @@ import { WEB3FORMS_KEY, SITE } from '../../consts';
     We'll follow up personally to find the right fit — at Sparrow, volunteering is relationship first.
   </p>
 </form>
+
+<script>
+  // Mirrors the red-outline + "Required" caption pattern used across the staff/LCP portals.
+  const form = document.getElementById('volunteer-form');
+  if (form) {
+    const requiredFields = Array.from(form.querySelectorAll('[required]'));
+
+    function fieldInvalid(field: HTMLInputElement | HTMLTextAreaElement) {
+      return field.value.trim().length === 0;
+    }
+
+    function setFieldError(field: HTMLInputElement | HTMLTextAreaElement, show: boolean) {
+      field.classList.toggle('field-input-error', show);
+      const errorId = `${field.id}-error`;
+      let errorEl = document.getElementById(errorId);
+      if (show && !errorEl) {
+        errorEl = document.createElement('p');
+        errorEl.id = errorId;
+        errorEl.className = 'mt-1 text-xs text-red-600';
+        errorEl.textContent = 'Required';
+        field.insertAdjacentElement('afterend', errorEl);
+      } else if (!show && errorEl) {
+        errorEl.remove();
+      }
+    }
+
+    requiredFields.forEach((field) => {
+      field.addEventListener('input', () => {
+        if (!fieldInvalid(field as HTMLInputElement | HTMLTextAreaElement)) {
+          setFieldError(field as HTMLInputElement | HTMLTextAreaElement, false);
+        }
+      });
+    });
+
+    form.addEventListener('submit', (e) => {
+      const invalidFields = requiredFields.filter((field) => {
+        const invalid = fieldInvalid(field as HTMLInputElement | HTMLTextAreaElement);
+        setFieldError(field as HTMLInputElement | HTMLTextAreaElement, invalid);
+        return invalid;
+      });
+      const firstInvalid = invalidFields[0] as HTMLElement | undefined;
+      if (firstInvalid) {
+        e.preventDefault();
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstInvalid.focus();
+      }
+    });
+  }
+</script>
