@@ -2,4 +2,4 @@
 title: "We Pursue Partnership"
 order: 8
 ---
-Our approach to partnership is relational, not transactional. We do not pursue donors, churches, or community members primarily as sources of funding — we pursue relationship. Partnerships are built on shared mission, mutual respect, clear communication, integrity, and long-term trust.
+We don't pursue donors, churches, or volunteers primarily as sources of funding — we pursue relationship. We believe God is our provider, and giving, service, and partnership are the natural outgrowth of that, never the starting point.
