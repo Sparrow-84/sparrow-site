@@ -19,7 +19,7 @@ export const SITE = {
 
 export const ORG = {
   legalName: 'Sparrow Inc.',
-  incorporated: 2021,
+  incorporated: 2019,
   address: {
     street: '245 SW Twin Oaks Circle',
     city: 'Corvallis',
