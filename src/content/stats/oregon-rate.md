@@ -1,6 +1,6 @@
 ---
-value: "3×"
-label: "Oregon's rate of family homelessness is three times the national average."
-source: "Statewide family homelessness rate"
+value: "78%"
+label: "Nearly 8 in 10 adults in homeless families with children are women."
+source: "USICH, Homelessness in America: Focus on Families with Children (2017 PIT data)"
 order: 1
 ---

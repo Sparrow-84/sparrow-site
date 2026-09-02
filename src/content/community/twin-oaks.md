@@ -28,6 +28,6 @@ gallery:
   - "/images/twin-oaks/twin-oaks-9175.jpg"
 order: 1
 ---
-Twin Oaks Community is the affordable housing community Sparrow owns and operates in South Corvallis. Through a grant from the State of Oregon, Sparrow stewards 61 residential sites where neighbors find stability, connection, and room to flourish.
+Twin Oaks Community (formerly known as Twin Oaks Mobile Home Park, and before that South Corvallis Trailer Park) is the affordable housing community Sparrow owns and operates in South Corvallis. Through a grant from the State of Oregon, Sparrow stewards 61 residential sites where neighbors find stability, connection, and room to flourish.
 
 Housing is more than a roof. At Twin Oaks, affordable lot rent, on-site care, and community events help residents move from surviving to thriving — and the Hope Fund stands ready when a neighbor faces an unexpected crisis.
