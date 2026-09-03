@@ -65,9 +65,9 @@ export const CONTACT = {
 export const WEB3FORMS_KEY =
   import.meta.env.PUBLIC_WEB3FORMS_KEY ?? 'YOUR-WEB3FORMS-ACCESS-KEY';
 
-/** Newsletter — route to the org's existing email tool (Brevo). Fill in the real action URL. */
+/** Newsletter — routes to Brevo's "TSM – New Website Signup" form, feeding the existing "The Sparrow Monthly" list. */
 export const NEWSLETTER = {
-  action: '', // TODO: Brevo subscribe form action URL
+  action: 'https://5891115d.sibforms.com/serve/MUIFAJqWjStg0b-BrEHusG7gqpocNsJWHVhA8ZLYY3gqgj89mRjtqhgBJ73CQ3Lux4T2WoFAFZ46ts0Fvia_NkNECIMmBZs6OE5UULfhgn7dl8QMJGJOv5NxPoVwGcpdirbz685Uo-UC0LTEbVG2PH7mdOdSBjKWTpT5CYp8cRpA6kZitnF-61-t5v_12KjTlVC-Ws55A6Rt6uhC',
 };
 
 /** Merchandise store — the site's own Shop page (which links out to the live Printify store). */
