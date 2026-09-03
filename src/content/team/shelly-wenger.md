@@ -1,6 +1,6 @@
 ---
 name: "Shelly Wenger"
-role: "Director of LifeChange Programs"
+role: "Founder & Director of LCP"
 group: "leadership"
 order: 2
 public: true
