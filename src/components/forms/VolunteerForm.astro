@@ -1,12 +1,12 @@
 ---
-import { WEB3FORMS_KEY, SITE } from '../../consts';
+import { WEB3FORMS_KEY } from '../../consts';
 ---
 
 <form id="volunteer-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4" novalidate>
   <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
   <input type="hidden" name="subject" value="New volunteer interest from sparrowinc.org" />
   <input type="hidden" name="from_name" value="Sparrow Website" />
-  <input type="hidden" name="redirect" value={`${SITE.url}/thank-you`} />
+  <input id="v-redirect" type="hidden" name="redirect" value="/thank-you" />
   <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
   <div class="grid gap-4 sm:grid-cols-2">
@@ -53,6 +53,16 @@ import { WEB3FORMS_KEY, SITE } from '../../consts';
   // Mirrors the red-outline + "Required" caption pattern used across the staff/LCP portals.
   const form = document.getElementById('volunteer-form');
   if (form) {
+    const redirectField = document.getElementById('v-redirect') as HTMLInputElement | null;
+    if (redirectField) redirectField.value = `${window.location.origin}/thank-you`;
+
+    // Pressing "back" after a successful submit can restore this page from the browser's
+    // cache with the old entries still filled in, looking like it was never sent. Reset it
+    // so the form is visibly empty again, not just stale-looking.
+    window.addEventListener('pageshow', (e) => {
+      if ((e as PageTransitionEvent).persisted) form.reset();
+    });
+
     const requiredFields = Array.from(form.querySelectorAll('[required]'));
 
     function fieldInvalid(field: HTMLInputElement | HTMLTextAreaElement) {

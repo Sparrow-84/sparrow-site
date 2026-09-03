@@ -1,12 +1,14 @@
 ---
-import { WEB3FORMS_KEY, SITE } from '../../consts';
+import { WEB3FORMS_KEY } from '../../consts';
 ---
 
 <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-4" novalidate>
   <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
   <input type="hidden" name="subject" value="New message from sparrowinc.org" />
   <input type="hidden" name="from_name" value="Sparrow Website" />
-  <input type="hidden" name="redirect" value={`${SITE.url}/thank-you`} />
+  {/* Value is set at submit time to the current origin, so this always lands on this same site's
+      own thank-you page — whether that's the staging URL today or sparrowinc.org after the domain switch. */}
+  <input id="c-redirect" type="hidden" name="redirect" value="/thank-you" />
   <!-- honeypot: bots fill this in, people don't -->
   <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
@@ -47,6 +49,16 @@ import { WEB3FORMS_KEY, SITE } from '../../consts';
   // Mirrors the red-outline + "Required" caption pattern used across the staff/LCP portals.
   const form = document.getElementById('contact-form');
   if (form) {
+    const redirectField = document.getElementById('c-redirect') as HTMLInputElement | null;
+    if (redirectField) redirectField.value = `${window.location.origin}/thank-you`;
+
+    // Pressing "back" after a successful submit can restore this page from the browser's
+    // cache with the old message still filled in, looking like it was never sent. Reset it
+    // so the form is visibly empty again, not just stale-looking.
+    window.addEventListener('pageshow', (e) => {
+      if ((e as PageTransitionEvent).persisted) form.reset();
+    });
+
     const requiredFields = Array.from(form.querySelectorAll('[required]'));
 
     function fieldInvalid(field: HTMLInputElement | HTMLTextAreaElement) {
