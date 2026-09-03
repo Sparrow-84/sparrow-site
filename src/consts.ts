@@ -14,7 +14,7 @@ export const SITE = {
   description:
     'Sparrow is a faith-based nonprofit in Corvallis, Oregon, walking families out of homelessness through affordable housing at Twin Oaks and the LifeChange Program.',
   verse:
-    '"Even the sparrow finds a home, and the swallow a nest for herself." — Psalm 84:3',
+    '"Even the sparrow has found a home, and the swallow a nest for herself." — Psalm 84:3 (NIV)',
 };
 
 export const ORG = {
@@ -70,8 +70,8 @@ export const NEWSLETTER = {
   action: '', // TODO: Brevo subscribe form action URL
 };
 
-/** Existing merchandise store — link out (no e-commerce in this build). */
-export const SHOP_URL = 'https://www.sparrowinc.org/shop/'; // TODO: confirm final store URL
+/** Merchandise store — the site's own Shop page (which links out to the live Printify store). */
+export const SHOP_URL = '/shop';
 
 /**
  * "Single front door" — login entry points to FUTURE apps that don't exist yet.

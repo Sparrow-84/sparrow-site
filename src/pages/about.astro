@@ -79,9 +79,29 @@ const BOARD = [
           because of who made them.
         </p>
         <p class="mt-4 text-sm italic text-sparrow-gray dark:text-dark-muted">
-          "Even the sparrow finds a home, and the swallow a nest for herself, where she may lay her
-          young, at your altars, O LORD of hosts." — Psalm 84:3
+          "Even the sparrow has found a home, and the swallow a nest for herself, where she may
+          have her young — a place near your altar, LORD Almighty, my King and my God."
+          — Psalm 84:3 (NIV)
         </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Who Sparrow is</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">A short look at our mission and how it all began.</p>
+    </div>
+    <div class="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl shadow-card">
+      <div class="aspect-video">
+        <iframe
+          class="h-full w-full"
+          src="https://www.youtube-nocookie.com/embed/9ul3FTugEy8"
+          title="Who Sparrow is"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </Section>
@@ -137,16 +157,15 @@ const BOARD = [
   <Section bg="white">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-2xl font-semibold sm:text-3xl">Our board</h2>
-      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">Volunteer leaders who guide Sparrow's mission and oversight.</p>
     </div>
-    <ul class="mx-auto mt-10 grid max-w-2xl gap-x-8 gap-y-5 sm:grid-cols-2">
+    <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
       {BOARD.map((b) => (
-        <li class="text-center sm:text-left">
-          <p class="font-serif text-lg font-semibold">{b.name}</p>
+        <div class="text-center">
+          <p class="font-serif text-base font-semibold">{b.name}</p>
           <p class="text-sm text-sparrow-gray dark:text-dark-muted">{b.role}</p>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   </Section>
 
   <CTABand

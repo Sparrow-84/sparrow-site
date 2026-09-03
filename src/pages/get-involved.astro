@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import VolunteerForm from '../components/forms/VolunteerForm.astro';
+import NewsletterForm from '../components/forms/NewsletterForm.astro';
 import DonateButtons from '../components/DonateButtons.astro';
 import CTABand from '../components/CTABand.astro';
 import { SHOP_URL } from '../consts';
@@ -12,6 +13,7 @@ const ways = [
   'Restocking homes for new families',
   'Financial mentorship',
   'Peer support',
+  'Prayer volunteer team',
   'The Service Volunteer Program — a year-long, live-in service role at Twin Oaks',
 ];
 ---
@@ -61,6 +63,16 @@ const ways = [
         </p>
         <div class="mt-4"><VolunteerForm /></div>
       </div>
+    </div>
+  </Section>
+
+  <Section bg="mist">
+    <div class="mx-auto max-w-xl text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Stay connected</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">
+        Get The Sparrow Monthly — prayer requests, community updates, and news from Sparrow, delivered to your inbox.
+      </p>
+      <div class="mt-6 flex justify-center"><NewsletterForm /></div>
     </div>
   </Section>
 
