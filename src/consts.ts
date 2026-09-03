@@ -30,6 +30,7 @@ export const ORG = {
 
 /** Donations — existing GiveButter campaigns. Swap a URL here if the processor ever changes. */
 export const GIVEBUTTER = {
+  generalFund: 'https://givebutter.com/nzMxFi',
   communityCenter: 'https://givebutter.com/uK0uk8',
   hopeFund: 'https://givebutter.com/TT17Ds',
 };

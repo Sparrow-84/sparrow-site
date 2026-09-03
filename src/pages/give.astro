@@ -19,7 +19,18 @@ import { GIVEBUTTER, SHOP_URL } from '../consts';
   </Section>
 
   <Section bg="white">
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="grid gap-6 md:grid-cols-3">
+      <div class="flex flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule p-8 shadow-card">
+        <h2 class="text-xl font-semibold">General Fund</h2>
+        <p class="mt-3 flex-1 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
+          Give where it's needed most — your gift goes directly toward whatever's most urgent for
+          families right now.
+        </p>
+        <a href={GIVEBUTTER.generalFund} class="btn-gold mt-6" target="_blank" rel="noopener">
+          Give to the General Fund
+        </a>
+      </div>
+
       <div class="flex flex-col rounded-2xl border border-sparrow-rule dark:border-dark-rule p-8 shadow-card">
         <h2 class="text-xl font-semibold">Twin Oaks Community Center</h2>
         <p class="mt-3 flex-1 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
