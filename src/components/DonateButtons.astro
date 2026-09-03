@@ -1,21 +1,36 @@
 ---
 import { GIVEBUTTER } from '../consts';
 
+type Fund = 'general' | 'communityCenter' | 'hopeFund';
+
 interface Props {
   class?: string;
   onDark?: boolean;
+  /** Which funds to show, and in this order. Defaults to all three. */
+  funds?: Fund[];
+  /** General Fund gets the unique/primary color, the rest share gold. Set false to keep everything uniform gold. */
+  highlightGeneral?: boolean;
 }
-const { class: className = '', onDark = false } = Astro.props;
+const { class: className = '', onDark = false, funds = ['general', 'communityCenter', 'hopeFund'], highlightGeneral = true } = Astro.props;
+
+const FUND_INFO: Record<Fund, { href: string; label: string }> = {
+  general: { href: GIVEBUTTER.generalFund, label: 'Give to the General Fund' },
+  communityCenter: { href: GIVEBUTTER.communityCenter, label: 'Give to the Community Center' },
+  hopeFund: { href: GIVEBUTTER.hopeFund, label: 'Give to the Hope Fund' },
+};
 ---
 
 <div class={`flex flex-wrap gap-3 ${className}`}>
-  <a href={GIVEBUTTER.generalFund} class="btn-gold" target="_blank" rel="noopener">
-    Give to the General Fund
-  </a>
-  <a href={GIVEBUTTER.communityCenter} class="btn-gold" target="_blank" rel="noopener">
-    Give to the Community Center
-  </a>
-  <a href={GIVEBUTTER.hopeFund} class="btn-gold" target="_blank" rel="noopener">
-    Give to the Hope Fund
-  </a>
+  {
+    funds.map((fund) => (
+      <a
+        href={FUND_INFO[fund].href}
+        class={highlightGeneral && fund === 'general' ? 'btn-primary' : 'btn-gold'}
+        target="_blank"
+        rel="noopener"
+      >
+        {FUND_INFO[fund].label}
+      </a>
+    ))
+  }
 </div>

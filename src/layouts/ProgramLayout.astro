@@ -10,9 +10,18 @@ interface Props {
   tagline: string;
   heroImage?: string;
   eyebrow?: string;
+  donateFunds?: ('general' | 'communityCenter' | 'hopeFund')[];
 }
 
-const { title, description, programTitle, tagline, heroImage, eyebrow = 'A Sparrow Program' } = Astro.props;
+const {
+  title,
+  description,
+  programTitle,
+  tagline,
+  heroImage,
+  eyebrow = 'A Sparrow Program',
+  donateFunds = ['general', 'communityCenter', 'hopeFund'],
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -47,7 +56,7 @@ const { title, description, programTitle, tagline, heroImage, eyebrow = 'A Sparr
         Every gift and every volunteer helps a family find stability and hope.
       </p>
       <div class="mt-6 flex flex-wrap justify-center gap-3">
-        <DonateButtons />
+        <DonateButtons funds={donateFunds} />
         <a href="/get-involved" class="inline-flex items-center justify-center rounded-2xl border border-white/60 px-6 py-3 font-sans font-medium text-white transition hover:bg-white/10">Volunteer</a>
       </div>
     </div>
