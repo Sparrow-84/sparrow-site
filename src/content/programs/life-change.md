@@ -8,7 +8,7 @@ cardImage: "/images/lcp-keys-handover.webp"
 contactEmail: "lifechange@sparrowinc.org" # CONFIRM live, monitored inbox before launch
 contactPhone: "971-209-2450"
 eligibility:
-  - "Single parents or families with at least one child"
+  - "Single mom families with at least one child"
   - "A commitment to a substance-free home"
   - "Active engagement in mentoring and growth work"
 applicationSteps:
