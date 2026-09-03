@@ -18,6 +18,14 @@ const FUND_INFO: Record<Fund, { href: string; label: string }> = {
   communityCenter: { href: GIVEBUTTER.communityCenter, label: 'Give to the Community Center' },
   hopeFund: { href: GIVEBUTTER.hopeFund, label: 'Give to the Hope Fund' },
 };
+
+// The one button that should stand out (General Fund) gets an outline treatment rather than a
+// second solid color, matching the "Volunteer" outline button used alongside these elsewhere —
+// one standout style per group, not two competing solid colors. White-bordered on dark
+// backgrounds (CTABand, ProgramLayout's closing band), green-bordered on light ones.
+const highlightClass = onDark
+  ? 'inline-flex items-center justify-center rounded-2xl border border-white/60 px-6 py-3 font-sans font-medium text-white transition hover:bg-white/10'
+  : 'btn-outline';
 ---
 
 <div class={`flex flex-wrap gap-3 ${className}`}>
@@ -25,7 +33,7 @@ const FUND_INFO: Record<Fund, { href: string; label: string }> = {
     funds.map((fund) => (
       <a
         href={FUND_INFO[fund].href}
-        class={highlightGeneral && fund === 'general' ? 'btn-primary' : 'btn-gold'}
+        class={highlightGeneral && fund === 'general' ? highlightClass : 'btn-gold'}
         target="_blank"
         rel="noopener"
       >
