@@ -14,7 +14,7 @@ const sources = sorted.map((s) => s.data.source).filter((s): s is string => !!s)
     sorted.map((s) => (
       <div class="text-center">
         <p class="font-serif text-5xl font-semibold text-sparrow-gold">{s.data.value}</p>
-        <p class="mt-2 text-sparrow-ink/80 dark:text-dark-text/80">{s.data.label}</p>
+        <p class="mt-2 text-sparrow-ink/80 dark:text-dark-text/80" set:html={s.data.label} />
       </div>
     ))
   }
