@@ -2,7 +2,7 @@
 title: "The LifeChange Program"
 slug: "life-change"
 tagline: "A year-long, whole-person journey out of homelessness — walked alongside a community that believes in you."
-summary: "A year-long holistic program that walks single parents and families facing homelessness toward healing, stability, and lasting transformation."
+summary: "A year-long holistic program that walks single mom families facing homelessness toward healing, stability, and lasting transformation."
 heroImage: "/images/hero-community-walk.webp"
 cardImage: "/images/lcp-keys-handover.webp"
 contactEmail: "lifechange@sparrowinc.org" # CONFIRM live, monitored inbox before launch
@@ -31,6 +31,6 @@ gallery:
   - "/images/lcp-shiloh-house.webp"
 order: 2
 ---
-The LifeChange Program (LCP) walks single parents and families facing homelessness through a year-long journey toward lasting transformation. Participants live in homes provided through partner churches or generous donors while receiving mentorship across four areas of life — physical, emotional, relational, and spiritual.
+The LifeChange Program (LCP) walks single mom families facing homelessness through a year-long journey toward lasting transformation. Participants live in homes provided through partner churches or generous donors while receiving mentorship across four areas of life — physical, emotional, relational, and spiritual.
 
 It's a hand up, not a handout. Through weekly financial coaching, peer support, and group mentoring, families set goals, rebuild stability, and rediscover their God-given worth — supported every step of the way by people who believe in them.
