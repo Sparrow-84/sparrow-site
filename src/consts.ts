@@ -83,17 +83,14 @@ export const PORTALS = [
     key: 'staff',
     label: 'Staff Portal',
     blurb: 'For Sparrow staff.',
-    // Staging host; swap to https://staff.sparrowinc.org once the custom domain is set up.
-    url: 'https://sparrow-staff-portal-b3o.pages.dev',
+    url: 'https://staff.sparrowinc.org',
     live: true,
   },
   {
     key: 'participant',
     label: 'Participant Portal',
     blurb: 'For LifeChange families.',
-    // Staging host; swap to https://portal.sparrowinc.org once the custom domain is set up
-    // (then update Supabase Auth → URL Configuration to match).
-    url: 'https://sparrow-lcp-portal-aj7.pages.dev',
+    url: 'https://portal.sparrowinc.org',
     live: true,
   },
   {
