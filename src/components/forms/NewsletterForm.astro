@@ -5,13 +5,18 @@ import { WEB3FORMS_KEY, NEWSLETTER, SITE } from '../../consts';
 // route through Web3Forms so no one is dropped. Swap NEWSLETTER.action to point at Brevo.
 const usingWeb3 = !NEWSLETTER.action;
 const action = NEWSLETTER.action || 'https://api.web3forms.com/submit';
+
+// This component renders more than once on some pages (site footer + Get Involved's own
+// copy), so the hidden-iframe target needs a per-instance unique name — a single shared
+// name/id would let one copy's script silently listen on the wrong copy's form.
+const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}`;
 ---
 
 <form
   action={action}
   method="POST"
-  target={usingWeb3 ? undefined : 'newsletter-target'}
-  id="newsletter-form"
+  target={usingWeb3 ? undefined : targetName}
+  data-newsletter-form
   class="flex flex-col gap-2 sm:flex-row"
 >
   {usingWeb3 && <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />}
@@ -34,23 +39,28 @@ const action = NEWSLETTER.action || 'https://api.web3forms.com/submit';
   <button type="submit" class="btn-primary !px-5 !py-2 text-sm">Subscribe</button>
 </form>
 
-{!usingWeb3 && <iframe name="newsletter-target" class="hidden" aria-hidden="true" tabindex="-1"></iframe>}
+{!usingWeb3 && <iframe name={targetName} class="hidden" aria-hidden="true" tabindex="-1"></iframe>}
 
 {!usingWeb3 && (
   <script>
-    // Brevo's form posts here, inside a hidden iframe, so the visitor never leaves the site to
-    // see Brevo's own unbranded raw JSON response. Once that hidden submission finishes loading,
-    // send the visitor to our own branded confirmation page instead.
-    const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
-    const iframe = document.querySelector('iframe[name="newsletter-target"]') as HTMLIFrameElement | null;
-    let submitted = false;
-    form?.addEventListener('submit', () => {
-      submitted = true;
-    });
-    iframe?.addEventListener('load', () => {
-      if (submitted) {
-        window.location.href = '/subscribed';
-      }
+    // Wire up every newsletter form on the page independently (there can be more than one —
+    // e.g. the footer's copy and the Get Involved page's own copy, both present at once).
+    // Each form's own unique `target` attribute (generated per-instance server-side) is used
+    // to find that same instance's paired hidden iframe, so two copies never cross-wire.
+    document.querySelectorAll<HTMLFormElement>('form[data-newsletter-form]').forEach((form) => {
+      const name = form.getAttribute('target');
+      if (!name) return;
+      const iframe = document.querySelector<HTMLIFrameElement>(`iframe[name="${name}"]`);
+      if (!iframe) return;
+      let submitted = false;
+      form.addEventListener('submit', () => {
+        submitted = true;
+      });
+      iframe.addEventListener('load', () => {
+        if (submitted) {
+          window.location.href = '/subscribed';
+        }
+      });
     });
   </script>
 )}
