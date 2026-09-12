@@ -27,11 +27,10 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
   {!usingWeb3 && <input type="text" name="email_address_check" value="" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />}
   {!usingWeb3 && <input type="hidden" name="locale" value="en" />}
 
-  <label class="sr-only" for="nl-email">Email address</label>
   <input
-    id="nl-email"
     type="email"
     name={usingWeb3 ? 'email' : 'EMAIL'}
+    aria-label="Email address"
     required
     placeholder="you@example.com"
     class="field-input sm:flex-1"
