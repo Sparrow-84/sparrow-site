@@ -44,21 +44,19 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
   <script>
     // Wire up every newsletter form on the page independently (there can be more than one —
     // e.g. the footer's copy and the Get Involved page's own copy, both present at once).
-    // Each form's own unique `target` attribute (generated per-instance server-side) is used
-    // to find that same instance's paired hidden iframe, so two copies never cross-wire.
+    //
+    // Deliberately NOT waiting on the hidden iframe's `load` event to know when to redirect —
+    // confirmed via real testing that the form submission itself succeeds (Brevo creates the
+    // contact) but the iframe's load event never reliably fires, almost certainly because
+    // Brevo sets anti-clickjacking headers on their own pages that block a cross-origin
+    // iframe from "loading" their response in the normal sense, even though the underlying
+    // POST still goes through. A short fixed delay after submit is more reliable than an
+    // event that may never come.
     document.querySelectorAll<HTMLFormElement>('form[data-newsletter-form]').forEach((form) => {
-      const name = form.getAttribute('target');
-      if (!name) return;
-      const iframe = document.querySelector<HTMLIFrameElement>(`iframe[name="${name}"]`);
-      if (!iframe) return;
-      let submitted = false;
       form.addEventListener('submit', () => {
-        submitted = true;
-      });
-      iframe.addEventListener('load', () => {
-        if (submitted) {
+        setTimeout(() => {
           window.location.href = '/subscribed';
-        }
+        }, 1500);
       });
     });
   </script>
