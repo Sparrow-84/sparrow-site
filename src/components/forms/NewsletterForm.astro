@@ -1,6 +1,14 @@
 ---
 import { WEB3FORMS_KEY, NEWSLETTER, SITE } from '../../consts';
 
+interface Props {
+  /** Pair First/Last name on one row instead of stacking them. Use where there's real
+   *  horizontal room (e.g. Get Involved's own section) — leave off in tighter spots like
+   *  the site footer, where two fields sharing a row get too cramped for their placeholders. */
+  pairedNames?: boolean;
+}
+const { pairedNames = false } = Astro.props;
+
 // Until the org's email tool (Brevo) form action is wired into consts.ts, signups
 // route through Web3Forms so no one is dropped. Swap NEWSLETTER.action to point at Brevo.
 const usingWeb3 = !NEWSLETTER.action;
@@ -30,26 +38,25 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
   {/* Name fields — Brevo path only, matching the FIRSTNAME/LASTNAME attributes configured
       on this form in Brevo's own dashboard. First name required, last name optional —
       mirrors Love INC's signup form, the tone/model this whole site is calibrated against.
-      Stacked (not side-by-side) — this form renders in the site footer, a narrow column
-      where two fields sharing one row leaves each too cramped for its placeholder text. */}
+      Paired or stacked per the `pairedNames` prop — see its comment above for why. */}
   {!usingWeb3 && (
-    <input
-      type="text"
-      name="FIRSTNAME"
-      aria-label="First name"
-      required
-      placeholder="First name"
-      class="field-input"
-    />
-  )}
-  {!usingWeb3 && (
-    <input
-      type="text"
-      name="LASTNAME"
-      aria-label="Last name (optional)"
-      placeholder="Last name"
-      class="field-input"
-    />
+    <div class={pairedNames ? 'flex gap-3' : 'contents'}>
+      <input
+        type="text"
+        name="FIRSTNAME"
+        aria-label="First name"
+        required
+        placeholder="First name"
+        class="field-input flex-1"
+      />
+      <input
+        type="text"
+        name="LASTNAME"
+        aria-label="Last name (optional)"
+        placeholder="Last name"
+        class="field-input flex-1"
+      />
+    </div>
   )}
 
   <input
