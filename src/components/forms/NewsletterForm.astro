@@ -17,7 +17,7 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
   method="POST"
   target={usingWeb3 ? undefined : targetName}
   data-newsletter-form
-  class="flex flex-col gap-2"
+  class="flex flex-col gap-3"
 >
   {usingWeb3 && <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />}
   {usingWeb3 && <input type="hidden" name="subject" value="New The Sparrow Monthly signup" />}
@@ -29,38 +29,38 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
 
   {/* Name fields — Brevo path only, matching the FIRSTNAME/LASTNAME attributes configured
       on this form in Brevo's own dashboard. First name required, last name optional —
-      mirrors Love INC's signup form, the tone/model this whole site is calibrated against. */}
+      mirrors Love INC's signup form, the tone/model this whole site is calibrated against.
+      Stacked (not side-by-side) — this form renders in the site footer, a narrow column
+      where two fields sharing one row leaves each too cramped for its placeholder text. */}
   {!usingWeb3 && (
-    <div class="flex flex-col gap-2 sm:flex-row">
-      <input
-        type="text"
-        name="FIRSTNAME"
-        aria-label="First name"
-        required
-        placeholder="First name"
-        class="field-input sm:flex-1"
-      />
-      <input
-        type="text"
-        name="LASTNAME"
-        aria-label="Last name (optional)"
-        placeholder="Last name (optional)"
-        class="field-input sm:flex-1"
-      />
-    </div>
+    <input
+      type="text"
+      name="FIRSTNAME"
+      aria-label="First name"
+      required
+      placeholder="First name"
+      class="field-input"
+    />
+  )}
+  {!usingWeb3 && (
+    <input
+      type="text"
+      name="LASTNAME"
+      aria-label="Last name (optional)"
+      placeholder="Last name"
+      class="field-input"
+    />
   )}
 
-  <div class="flex flex-col gap-2 sm:flex-row">
-    <input
-      type="email"
-      name={usingWeb3 ? 'email' : 'EMAIL'}
-      aria-label="Email address"
-      required
-      placeholder="you@example.com"
-      class="field-input sm:flex-1"
-    />
-    <button type="submit" class="btn-primary !px-5 !py-2 text-sm">Subscribe</button>
-  </div>
+  <input
+    type="email"
+    name={usingWeb3 ? 'email' : 'EMAIL'}
+    aria-label="Email address"
+    required
+    placeholder="you@example.com"
+    class="field-input"
+  />
+  <button type="submit" class="btn-primary !px-5 !py-2 text-sm">Subscribe</button>
 </form>
 
 {!usingWeb3 && <iframe name={targetName} class="hidden" aria-hidden="true" tabindex="-1"></iframe>}
