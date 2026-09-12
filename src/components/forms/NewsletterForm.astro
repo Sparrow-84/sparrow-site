@@ -41,20 +41,30 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
 {!usingWeb3 && <iframe name={targetName} class="hidden" aria-hidden="true" tabindex="-1"></iframe>}
 
 {!usingWeb3 && (
-  <script>
-    // Wire up every newsletter form on the page independently (there can be more than one —
-    // e.g. the footer's copy and the Get Involved page's own copy, both present at once).
+  <script is:inline>
+    // Deliberately plain JavaScript, no TypeScript syntax (no generics/type annotations) —
+    // this file previously used `querySelectorAll<HTMLFormElement>`, and two independent
+    // redirect strategies both silently failed to run in real testing, which pointed at the
+    // script itself never executing (a parse error kills the whole block, and this syntax is
+    // invalid in a browser unless something transpiles it first) rather than either strategy's
+    // own logic being wrong. is:inline also guarantees Astro ships this completely as-is,
+    // with no bundling/processing step in between that could interfere.
     //
-    // Deliberately NOT waiting on the hidden iframe's `load` event to know when to redirect —
-    // confirmed via real testing that the form submission itself succeeds (Brevo creates the
-    // contact) but the iframe's load event never reliably fires, almost certainly because
-    // Brevo sets anti-clickjacking headers on their own pages that block a cross-origin
-    // iframe from "loading" their response in the normal sense, even though the underlying
-    // POST still goes through. A short fixed delay after submit is more reliable than an
-    // event that may never come.
-    document.querySelectorAll<HTMLFormElement>('form[data-newsletter-form]').forEach((form) => {
-      form.addEventListener('submit', () => {
-        setTimeout(() => {
+    // Also NOT waiting on the hidden iframe's `load` event to know when to redirect — real
+    // testing confirmed the form submission itself succeeds (Brevo creates the contact) but
+    // that event never reliably fires, almost certainly because Brevo sets anti-clickjacking
+    // headers that block a cross-origin iframe from "loading" their response the normal way,
+    // even though the underlying POST still goes through fine. A fixed delay after submit
+    // sidesteps that. The button also gets instant visible feedback on click, independent of
+    // whether the delayed redirect itself works.
+    document.querySelectorAll('form[data-newsletter-form]').forEach(function (form) {
+      form.addEventListener('submit', function () {
+        var button = form.querySelector('button[type="submit"]');
+        if (button) {
+          button.disabled = true;
+          button.textContent = 'Subscribing…';
+        }
+        setTimeout(function () {
           window.location.href = '/subscribed';
         }, 1500);
       });
