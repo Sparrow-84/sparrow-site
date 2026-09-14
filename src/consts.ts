@@ -71,6 +71,15 @@ export const NEWSLETTER = {
   action: 'https://5891115d.sibforms.com/serve/MUIFAJqWjStg0b-BrEHusG7gqpocNsJWHVhA8ZLYY3gqgj89mRjtqhgBJ73CQ3Lux4T2WoFAFZ46ts0Fvia_NkNECIMmBZs6OE5UULfhgn7dl8QMJGJOv5NxPoVwGcpdirbz685Uo-UC0LTEbVG2PH7mdOdSBjKWTpT5CYp8cRpA6kZitnF-61-t5v_12KjTlVC-Ws55A6Rt6uhC',
 };
 
+/**
+ * Google reCAPTCHA v2 (checkbox) site key for the Brevo newsletter signup form, registered
+ * at google.com/recaptcha/admin as "Sparrow TSM Signup" (domain sparrowinc.org). Public-safe
+ * by design — it only identifies which site is asking, unlike the matching secret key, which
+ * lives solely in Brevo's own form settings (Brevo verifies the token server-side on its own
+ * endpoint) and must never be added here.
+ */
+export const RECAPTCHA_SITE_KEY = '6LevD7ctAAAAACsq7Rv1Z7wWBzBSr0ueLY-vMvi9';
+
 /** Merchandise store — the site's own Shop page (which links out to the live Printify store). */
 export const SHOP_URL = '/shop';
 

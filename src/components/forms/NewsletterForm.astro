@@ -1,5 +1,5 @@
 ---
-import { WEB3FORMS_KEY, NEWSLETTER, SITE } from '../../consts';
+import { WEB3FORMS_KEY, NEWSLETTER, SITE, RECAPTCHA_SITE_KEY } from '../../consts';
 
 interface Props {
   /** Pair First/Last name on one row instead of stacking them. Use where there's real
@@ -18,6 +18,7 @@ const action = NEWSLETTER.action || 'https://api.web3forms.com/submit';
 // copy), so the hidden-iframe target needs a per-instance unique name — a single shared
 // name/id would let one copy's script silently listen on the wrong copy's form.
 const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}`;
+const captchaId = `sib-captcha-${Math.random().toString(36).slice(2, 10)}`;
 ---
 
 <form
@@ -67,6 +68,19 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
     placeholder="you@example.com"
     class="field-input"
   />
+
+  {/* Brevo path only — registered as "Sparrow TSM Signup" in Google's reCAPTCHA admin.
+      Rendered implicitly by Google's own script (loaded below) picking up this
+      .g-recaptcha div; no explicit grecaptcha.render() call needed. */}
+  {!usingWeb3 && (
+    <div>
+      <div class="g-recaptcha" id={captchaId} data-sitekey={RECAPTCHA_SITE_KEY}></div>
+      <p data-captcha-error class="hidden text-sm text-red-600 mt-1">
+        Please check the box above before subscribing.
+      </p>
+    </div>
+  )}
+
   <button type="submit" class="btn-primary !px-5 !py-2 text-sm">Subscribe</button>
 </form>
 
@@ -89,8 +103,41 @@ const targetName = `newsletter-target-${Math.random().toString(36).slice(2, 10)}
     // even though the underlying POST still goes through fine. A fixed delay after submit
     // sidesteps that. The button also gets instant visible feedback on click, independent of
     // whether the delayed redirect itself works.
+    // Google's recaptcha implicit-render script isn't loaded by default — inject it once
+    // even though this component (and its .g-recaptcha div) can appear twice on one page
+    // (site footer + Get Involved), since a second <script src> tag would just re-fetch
+    // the same already-initialized library rather than genuinely reload it.
+    if (!document.querySelector('script[data-recaptcha-api]')) {
+      var recaptchaScript = document.createElement('script');
+      recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?hl=en';
+      recaptchaScript.async = true;
+      recaptchaScript.defer = true;
+      recaptchaScript.setAttribute('data-recaptcha-api', 'true');
+      document.head.appendChild(recaptchaScript);
+    }
+
     document.querySelectorAll('form[data-newsletter-form]').forEach(function (form) {
-      form.addEventListener('submit', function () {
+      form.addEventListener('submit', function (e) {
+        var captchaDiv = form.querySelector('.g-recaptcha');
+        var errorEl = form.querySelector('[data-captcha-error]');
+
+        if (captchaDiv) {
+          // Implicit rendering assigns widget IDs in document order across ALL .g-recaptcha
+          // divs on the page, not just this form's own — so the widget ID for this form's
+          // widget is its index among every such div on the page, not always 0.
+          var allCaptchas = document.querySelectorAll('.g-recaptcha');
+          var widgetId = Array.prototype.indexOf.call(allCaptchas, captchaDiv);
+          var response = window.grecaptcha && widgetId > -1
+            ? window.grecaptcha.getResponse(widgetId)
+            : '';
+          if (!response) {
+            e.preventDefault();
+            if (errorEl) errorEl.classList.remove('hidden');
+            return;
+          }
+        }
+        if (errorEl) errorEl.classList.add('hidden');
+
         var button = form.querySelector('button[type="submit"]');
         if (button) {
           button.disabled = true;
