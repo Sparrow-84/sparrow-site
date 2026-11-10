@@ -1,0 +1,526 @@
+[
+  {
+    "id": "30844125",
+    "name": "\"FREE\" Hoodie",
+    "printifyTitle": "\"FREE\" Unisex Heavy Weight Hoodie",
+    "group": "adult",
+    "colors": [
+      {
+        "name": "Forest Green",
+        "hex": "#223b26",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664531&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664531&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664531&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664531&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664531&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
+        ]
+      },
+      {
+        "name": "Navy",
+        "hex": "#1a2237",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800"
+        ]
+      },
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800"
+        ]
+      },
+      {
+        "name": "Indigo Blue",
+        "hex": "#476579",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800"
+        ]
+      },
+      {
+        "name": "Dark Heather",
+        "hex": "#454545",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800"
+        ]
+      },
+      {
+        "name": "Purple",
+        "hex": "#3C214E",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "30844139",
+    "name": "\"FREE\" Crewneck Sweatshirt",
+    "printifyTitle": "\"FREE\" Midweight Soft Style Fleece Crew Neck",
+    "group": "adult",
+    "colors": [
+      {
+        "name": "Forest Green",
+        "hex": "#223b26",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102284/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102286/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104800/102282/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/138552/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=neck-label-inner&revision=1794320303219&s=800"
+        ]
+      },
+      {
+        "name": "Paragon",
+        "hex": "#948794",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800"
+        ]
+      },
+      {
+        "name": "Navy",
+        "hex": "#1a2237",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102285/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800"
+        ]
+      },
+      {
+        "name": "Dark Heather",
+        "hex": "#454545",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102285/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "34226326",
+    "name": "\"FREE\" T-Shirt",
+    "printifyTitle": "\"FREE\" Unisex 100% Cotton T-Shirt",
+    "group": "adult",
+    "colors": [
+      {
+        "name": "Forest",
+        "hex": "#20362f",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
+        ]
+      },
+      {
+        "name": "Slate",
+        "hex": "#4a5b6e",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800"
+        ]
+      },
+      {
+        "name": "Navy",
+        "hex": "#1A1F35",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL",
+          "5XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800"
+        ]
+      },
+      {
+        "name": "Team Purple",
+        "hex": "#3C1F66",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800"
+        ]
+      },
+      {
+        "name": "Steel Blue",
+        "hex": "#7B92AF",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800"
+        ]
+      },
+      {
+        "name": "Vintage Black",
+        "hex": "#202125",
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL",
+          "4XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "30844127",
+    "name": "Sparrow Polo",
+    "printifyTitle": "Men's Sport Polo Shirt",
+    "group": "adult",
+    "colors": [
+      {
+        "name": "Forest Green",
+        "hex": "#31463a",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84320/80116/mens-sport-polo-shirt.jpg?camera_label=front&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84320/79983/mens-sport-polo-shirt.jpg?camera_label=back&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84320/80032/mens-sport-polo-shirt.jpg?camera_label=person-1&revision=1794318311845&s=800"
+        ]
+      },
+      {
+        "name": "Grey Concrete",
+        "hex": "#838881",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84327/80132/mens-sport-polo-shirt.jpg?camera_label=front&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84327/79985/mens-sport-polo-shirt.jpg?camera_label=back&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84327/80048/mens-sport-polo-shirt.jpg?camera_label=person-1&revision=1794318311845&s=800"
+        ]
+      },
+      {
+        "name": "Iron Grey",
+        "hex": "#595959",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84332/80121/mens-sport-polo-shirt.jpg?camera_label=front&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84332/79989/mens-sport-polo-shirt.jpg?camera_label=back&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84332/80037/mens-sport-polo-shirt.jpg?camera_label=person-1&revision=1794318311845&s=800"
+        ]
+      },
+      {
+        "name": "True Navy",
+        "hex": "#403f51",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84355/80129/mens-sport-polo-shirt.jpg?camera_label=front&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84355/79990/mens-sport-polo-shirt.jpg?camera_label=back&revision=1794318311845&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c82473223b1ad0964b3/84355/80045/mens-sport-polo-shirt.jpg?camera_label=person-1&revision=1794318311845&s=800"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "34224952",
+    "name": "Sparrow Beanie (name + bird)",
+    "printifyTitle": "Knit Beanie (Embroidery)",
+    "group": "adult",
+    "colors": [
+      {
+        "name": "Dark Green",
+        "hex": "#334c3d",
+        "sizes": [
+          "One size"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794317911563&s=800"
+        ]
+      },
+      {
+        "name": "Dark Navy",
+        "hex": "#2b2c3f",
+        "sizes": [
+          "One size"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794317911563&s=800"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "34226325",
+    "name": "Sparrow Beanie (bird only)",
+    "printifyTitle": "Knit Beanie (Embroidery)",
+    "group": "adult",
+    "colors": [
+      {
+        "name": "Dark Green",
+        "hex": "#334c3d",
+        "sizes": [
+          "One size"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794321827023&s=800"
+        ]
+      },
+      {
+        "name": "Dark Navy",
+        "hex": "#2b2c3f",
+        "sizes": [
+          "One size"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794321827023&s=800"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "30844134",
+    "name": "\"FREE\" Youth Hoodie",
+    "printifyTitle": "\"FREE\" Youth Hoodie",
+    "group": "youth",
+    "colors": [
+      {
+        "name": "Forest Green",
+        "hex": "#223b26",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/107813/free-youth-hoodie.jpg?camera_label=front&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/107814/free-youth-hoodie.jpg?camera_label=back&revision=1794318184037&s=800"
+        ]
+      },
+      {
+        "name": "Purple",
+        "hex": "#3C214E",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43913/107813/free-youth-hoodie.jpg?camera_label=front&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43913/107814/free-youth-hoodie.jpg?camera_label=back&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43913/110737/free-youth-hoodie.jpg?camera_label=person-1-front&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43913/110750/free-youth-hoodie.jpg?camera_label=person-1-back&revision=1794318184037&s=800"
+        ]
+      },
+      {
+        "name": "Navy",
+        "hex": "#1a2237",
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "images": [
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43911/107813/free-youth-hoodie.jpg?camera_label=front&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43911/107814/free-youth-hoodie.jpg?camera_label=back&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43911/110737/free-youth-hoodie.jpg?camera_label=person-1-front&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43911/110750/free-youth-hoodie.jpg?camera_label=person-1-back&revision=1794318184037&s=800"
+        ]
+      }
+    ]
+  }
+]

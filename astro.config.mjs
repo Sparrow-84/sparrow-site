@@ -9,5 +9,5 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://sparrowinc.org',
   output: 'static',
-  integrations: [tailwind(), mdx(), sitemap()],
+  integrations: [tailwind(), mdx(), sitemap({ filter: (page) => !page.includes('/staff-gift') })],
 });

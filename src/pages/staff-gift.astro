@@ -1,0 +1,253 @@
+---
+// Unlisted page for the 2026 staff Christmas party: staff + SV volunteers pick one
+// Sparrow merch item. Not in the nav, noindex, and filtered out of the sitemap.
+// Picks are emailed through Web3Forms (same inbox as the Contact form).
+// Product data + mockup URLs come from the live Printify Pop-Up Store; regenerate
+// src/lib/staff-gift-2026.json if the store's products or colors change.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { WEB3FORMS_KEY } from '../consts';
+import products from '../lib/staff-gift-2026.json';
+
+const adult = products.filter((p) => p.group === 'adult');
+const youth = products.filter((p) => p.group === 'youth');
+const groups = [
+  { title: '', items: adult },
+  { title: 'Youth sizes', items: youth },
+].filter((g) => g.items.length);
+---
+
+<BaseLayout title="Pick your Sparrow gift" description="Staff gift selection." noindex>
+  <Section bg="sage">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">Staff Christmas 2026</p>
+      <h1 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">Pick your Sparrow gift</h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        Thank you for everything you give to Sparrow. Choose one item below, pick a color and size, and send us your choice.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <form id="gift-form" class="mx-auto max-w-4xl" novalidate>
+      {groups.map((g) => (
+        <div class="mb-10">
+          {g.title && (
+            <>
+            <h2 class="mb-2 font-serif text-2xl font-semibold">{g.title}</h2>
+            <p class="mb-5 text-sm text-sparrow-gray dark:text-dark-muted">For kids in your family.</p>
+            </>
+          )}
+          <ul class="space-y-6">
+            {g.items.map((p) => (
+              <li class="gift-card rounded-2xl border border-sparrow-rule bg-white p-4 shadow-card dark:border-dark-rule dark:bg-dark-surface sm:p-5" data-id={p.id}>
+                <div class="grid gap-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                  <div class="min-w-0">
+                    {p.colors.map((c, ci) => (
+                      <div class="gallery" data-color={c.name} hidden={ci !== 0}>
+                        <img src={c.images[0]} alt={`${p.name} in ${c.name}`} width="800" height="800" class="main-img aspect-square w-full rounded-xl bg-sparrow-mist object-cover" loading="lazy" />
+                        {c.images.length > 1 && (
+                          <div class="mt-2 flex flex-wrap gap-2">
+                            {c.images.map((src, i) => (
+                              <button type="button" class="thumb h-16 w-16 overflow-hidden rounded-lg border-2 border-transparent bg-sparrow-mist" data-src={src} aria-label={`Photo ${i + 1} of ${p.name} in ${c.name}`} aria-pressed={i === 0 ? 'true' : 'false'}>
+                                <img src={src} alt="" width="64" height="64" class="h-full w-full object-cover" loading="lazy" />
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div class="flex min-w-0 flex-col gap-4">
+                    <h3 class="font-serif text-xl font-semibold">{p.name}</h3>
+
+                    <fieldset>
+                      <legend class="field-label">Color: <span class="color-name font-normal">{p.colors[0].name}</span></legend>
+                      <div class="mt-1 flex flex-wrap gap-2">
+                        {p.colors.map((c, ci) => (
+                          <label class="swatch cursor-pointer" title={c.name}>
+                            <input type="radio" class="peer sr-only" name={`color-${p.id}`} value={c.name} checked={ci === 0} />
+                            <span class="block h-9 w-9 rounded-full border border-black/20 ring-offset-2 peer-checked:ring-2 peer-checked:ring-sparrow-green peer-focus-visible:ring-2 peer-focus-visible:ring-sparrow-gold dark:ring-offset-dark-surface" style={`background:${c.hex}`}></span>
+                            <span class="sr-only">{c.name}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </fieldset>
+
+                    {p.colors[0].sizes.length > 1 && (
+                      <div>
+                        <label class="field-label" for={`size-${p.id}`}>Size</label>
+                        <select id={`size-${p.id}`} class="size-select field-input" data-sizes={JSON.stringify(Object.fromEntries(p.colors.map((c) => [c.name, c.sizes])))}>
+                          <option value="">Choose a size</option>
+                          {p.colors[0].sizes.map((s) => <option value={s}>{s}</option>)}
+                        </select>
+                      </div>
+                    )}
+
+                    <label class="pick mt-auto flex cursor-pointer items-center gap-3 rounded-xl border-2 border-sparrow-rule px-4 py-3 font-medium has-[:checked]:border-sparrow-green has-[:checked]:bg-sparrow-mist dark:border-dark-rule dark:has-[:checked]:bg-dark-bg">
+                      <input type="radio" name="item" value={p.id} class="h-5 w-5 accent-[#1E4D30]" />
+                      <span>This is my pick</span>
+                    </label>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <div id="send" class="rounded-2xl border border-sparrow-rule bg-sparrow-mist p-5 dark:border-dark-rule dark:bg-dark-surface sm:p-6">
+        <h2 class="font-serif text-2xl font-semibold">Send your pick</h2>
+        <p id="summary" class="mt-2 text-sparrow-ink/80 dark:text-dark-text/80">No item picked yet. Tap "This is my pick" on the one you want.</p>
+        <div class="mt-4 max-w-md">
+          <label class="field-label field-label-required" for="g-name">Your name</label>
+          <input id="g-name" class="field-input" type="text" autocomplete="name" required />
+        </div>
+        <p id="form-error" class="mt-3 text-sm font-medium text-red-600" role="alert" hidden></p>
+        <button type="submit" id="g-submit" class="btn-primary mt-4">Send my pick</button>
+      </div>
+
+      <div id="done" class="rounded-2xl border border-sparrow-green bg-sparrow-mist p-6 text-center dark:bg-dark-surface" hidden>
+        <h2 class="font-serif text-2xl font-semibold">Got it, thank you!</h2>
+        <p id="done-text" class="mt-2"></p>
+        <p class="mt-2 text-sm text-sparrow-gray dark:text-dark-muted">Want to change it? Just send a new pick and we'll use the latest one.</p>
+        <button type="button" id="again" class="mt-4 underline">Pick again</button>
+      </div>
+    </form>
+  </Section>
+</BaseLayout>
+
+<script define:vars={{ WEB3FORMS_KEY, products }}>
+  const form = document.getElementById('gift-form');
+  const summary = document.getElementById('summary');
+  const errorEl = document.getElementById('form-error');
+  const nameInput = document.getElementById('g-name');
+
+  function selection(card) {
+    const id = card.dataset.id;
+    const p = products.find((x) => x.id === id);
+    const color = card.querySelector(`input[name="color-${id}"]:checked`)?.value || '';
+    const sizeSel = card.querySelector('.size-select');
+    const size = sizeSel ? sizeSel.value : (p.colors.find((c) => c.name === color)?.sizes[0] || '');
+    return { p, color, size, needsSize: !!sizeSel };
+  }
+
+  function pickedCard() {
+    const r = form.querySelector('input[name="item"]:checked');
+    return r ? r.closest('.gift-card') : null;
+  }
+
+  function describe(s) {
+    return [s.p.name, s.color, s.size && s.size !== 'One size' ? `size ${s.size}` : ''].filter(Boolean).join(', ');
+  }
+
+  function updateSummary() {
+    const card = pickedCard();
+    if (!card) {
+      summary.textContent = 'No item picked yet. Tap "This is my pick" on the one you want.';
+      return;
+    }
+    const s = selection(card);
+    summary.textContent = `Your pick: ${describe(s)}${s.needsSize && !s.size ? ' (choose a size)' : ''}`;
+  }
+
+  document.querySelectorAll('.gift-card').forEach((card) => {
+    const id = card.dataset.id;
+    // Color change: show that color's photos and limit sizes to what's in stock for it.
+    card.querySelectorAll(`input[name="color-${id}"]`).forEach((radio) => {
+      radio.addEventListener('change', () => {
+        card.querySelectorAll('.gallery').forEach((g) => (g.hidden = g.dataset.color !== radio.value));
+        card.querySelector('.color-name').textContent = radio.value;
+        const sel = card.querySelector('.size-select');
+        if (sel) {
+          const sizes = JSON.parse(sel.dataset.sizes)[radio.value] || [];
+          const prev = sel.value;
+          sel.innerHTML = '<option value="">Choose a size</option>' + sizes.map((s) => `<option value="${s}">${s}</option>`).join('');
+          sel.value = sizes.includes(prev) ? prev : '';
+        }
+        updateSummary();
+      });
+    });
+    card.querySelector('.size-select')?.addEventListener('change', updateSummary);
+    card.querySelectorAll('.thumb').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const gallery = btn.closest('.gallery');
+        gallery.querySelector('.main-img').src = btn.dataset.src;
+        gallery.querySelectorAll('.thumb').forEach((b) => {
+          const on = b === btn;
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          b.classList.toggle('border-sparrow-green', on);
+          b.classList.toggle('border-transparent', !on);
+        });
+      });
+    });
+    card.querySelector('.thumb')?.classList.replace('border-transparent', 'border-sparrow-green');
+  });
+  form.querySelectorAll('input[name="item"]').forEach((r) => r.addEventListener('change', updateSummary));
+
+  function showError(msg, focusEl) {
+    errorEl.textContent = msg;
+    errorEl.hidden = false;
+    if (focusEl) {
+      focusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      focusEl.focus();
+    }
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorEl.hidden = true;
+    nameInput.classList.remove('field-input-error');
+    const card = pickedCard();
+    if (!card) return showError('Pick an item first: tap "This is my pick" on the one you want.', form.querySelector('input[name="item"]'));
+    const s = selection(card);
+    const sizeSel = card.querySelector('.size-select');
+    if (s.needsSize && !s.size) {
+      sizeSel.classList.add('field-input-error');
+      return showError(`Choose a size for the ${s.p.name}.`, sizeSel);
+    }
+    sizeSel?.classList.remove('field-input-error');
+    const name = nameInput.value.trim();
+    if (!name) {
+      nameInput.classList.add('field-input-error');
+      return showError('Add your name so we know whose gift this is.', nameInput);
+    }
+
+    const btn = document.getElementById('g-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Staff gift pick: ${name} - ${s.p.name}`,
+          from_name: 'Sparrow staff gift page',
+          name,
+          item: s.p.name,
+          color: s.color,
+          size: s.size,
+          printify_product: `${s.p.printifyTitle} (product ${s.p.id})`,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success === false) throw new Error(data.message || 'send failed');
+      document.getElementById('send').hidden = true;
+      document.getElementById('done-text').textContent = `${name}, we have you down for: ${describe(s)}.`;
+      document.getElementById('done').hidden = false;
+      document.getElementById('done').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch {
+      showError("That didn't send. Check your connection and try again, or text your pick to Susanna.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send my pick';
+    }
+  });
+
+  document.getElementById('again').addEventListener('click', () => {
+    document.getElementById('done').hidden = true;
+    document.getElementById('send').hidden = false;
+  });
+</script>
