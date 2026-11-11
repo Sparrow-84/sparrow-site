@@ -25,14 +25,19 @@ const STORE_URL = 'https://sparrowmerch.printify.me';
       </div>
     </div>
 
-    <ul class="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-3">
+    {/* One photo per product in the Printify Pop-Up Store. Keep this list in step with the store. */}
+    <ul class="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
       {[
-        { src: '/images/shop/sand-hoodie.webp', alt: 'Sparrow hoodie in sand' },
-        { src: '/images/shop/free-crewneck-navy.webp', alt: '"FREE" crewneck sweatshirt in navy' },
-        { src: '/images/shop/restore-tee-duo.webp', alt: '"Restore" t-shirt in forest green' },
+        { src: '/images/shop/free-hoodie.webp', name: '"FREE" Hoodie', alt: 'Back of the "FREE" hoodie in forest green, with a flock of birds' },
+        { src: '/images/shop/free-crewneck.webp', name: '"FREE" Crewneck', alt: 'Back of the "FREE" crewneck sweatshirt in navy, with a flock of birds' },
+        { src: '/images/shop/free-tee.webp', name: '"FREE" T-Shirt', alt: 'Two people wearing the "FREE" t-shirt in forest green' },
+        { src: '/images/shop/polo.webp', name: 'Sparrow Polo', alt: 'Sparrow polo in forest green with the Sparrow logo on the chest' },
+        { src: '/images/shop/beanie-name.webp', name: 'Sparrow Beanie', alt: 'Dark green beanie embroidered with the Sparrow name and bird' },
+        { src: '/images/shop/beanie-bird.webp', name: 'Sparrow Bird Beanie', alt: 'Dark navy beanie embroidered with the Sparrow bird' },
       ].map((p) => (
-        <li class="overflow-hidden rounded-2xl border border-sparrow-rule bg-white shadow-card dark:border-dark-rule">
-          <img src={p.src} alt={p.alt} width="600" height="600" class="aspect-square w-full object-cover" loading="lazy" />
+        <li class="overflow-hidden rounded-2xl border border-sparrow-rule bg-white shadow-card dark:border-dark-rule dark:bg-dark-surface">
+          <img src={p.src} alt={p.alt} width="800" height="800" class="aspect-square w-full object-cover" loading="lazy" />
+          <p class="px-3 py-2 text-center text-sm font-medium">{p.name}</p>
         </li>
       ))}
     </ul>
