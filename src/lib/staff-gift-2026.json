@@ -19,13 +19,13 @@
           "5XL"
         ],
         "images": [
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664531&s=800",
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664531&s=800",
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664531&s=800",
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664531&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664531&s=800",
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664531&s=800",
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664531&s=800",
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33419/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
         ]
       },
@@ -44,7 +44,13 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800"
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32896/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
         ]
       },
       {
@@ -62,7 +68,13 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800"
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32920/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
         ]
       },
       {
@@ -80,7 +92,13 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800"
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/42269/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
         ]
       },
       {
@@ -98,7 +116,13 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800"
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/32880/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
         ]
       },
       {
@@ -116,7 +140,13 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98424/free-unisex-heavy-weight-hoodie.jpg?camera_label=front&revision=1794319664532&s=800",
-          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800"
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98426/free-unisex-heavy-weight-hoodie.jpg?camera_label=back-2&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98427/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-1&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/98430/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/100682/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-4-back&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/100683/free-unisex-heavy-weight-hoodie.jpg?camera_label=person-5-right-sleeve&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/100685/free-unisex-heavy-weight-hoodie.jpg?camera_label=front-collar-closeup&revision=1794319664532&s=800",
+          "https://images-api.printify.com/mockup/6a7a6ca4473223b1ad0964b8/33379/110151/free-unisex-heavy-weight-hoodie.jpg?camera_label=size-chart&revision=1794319664532&s=800"
         ]
       }
     ]
@@ -140,11 +170,12 @@
           "4XL"
         ],
         "images": [
-          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102284/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-back&revision=1794320303219&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102286/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-back&revision=1794320303219&s=800",
           "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800",
           "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104800/102282/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102285/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102284/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/102286/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-back&revision=1794320303219&s=800",
           "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104798/138552/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=neck-label-inner&revision=1794320303219&s=800"
         ]
       },
@@ -161,8 +192,13 @@
           "4XL"
         ],
         "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102282/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=back&revision=1794320303219&s=800",
           "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102285/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102284/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/102286/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104826/138552/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=neck-label-inner&revision=1794320303219&s=800"
         ]
       },
       {
@@ -178,8 +214,13 @@
           "4XL"
         ],
         "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102282/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
           "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102285/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-front&revision=1794320303219&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102284/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/102286/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104742/138552/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=neck-label-inner&revision=1794320303219&s=800"
         ]
       },
       {
@@ -195,8 +236,13 @@
           "4XL"
         ],
         "images": [
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102282/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102283/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-front&revision=1794320303219&s=800",
           "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102285/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-front&revision=1794320303219&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102281/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=front&revision=1794320303219&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102284/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/102286/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=person-2-back&revision=1794320303219&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c6d473223b1ad0964ab/104735/138552/free-midweight-soft-style-fleece-crew-neck.jpg?camera_label=neck-label-inner&revision=1794320303219&s=800"
         ]
       }
     ]
@@ -221,11 +267,12 @@
           "4XL"
         ],
         "images": [
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18182/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
         ]
       },
@@ -243,8 +290,13 @@
           "4XL"
         ],
         "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/420577/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
         ]
       },
       {
@@ -262,8 +314,13 @@
           "5XL"
         ],
         "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18398/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
         ]
       },
       {
@@ -281,7 +338,12 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18510/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
         ]
       },
       {
@@ -299,7 +361,12 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18494/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
         ]
       },
       {
@@ -316,8 +383,13 @@
           "4XL"
         ],
         "images": [
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102044/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-2&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/92720/free-unisex-100-cotton-t-shirt.jpg?camera_label=back&revision=1794321827039&s=800",
           "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102045/free-unisex-100-cotton-t-shirt.jpg?camera_label=back-2&revision=1794321827039&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102052/free-unisex-100-cotton-t-shirt.jpg?camera_label=duo-3&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102059/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-8-front&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/102058/free-unisex-100-cotton-t-shirt.jpg?camera_label=person-7-back&revision=1794321827039&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c2ae691f2d046019c93/18534/92735/free-unisex-100-cotton-t-shirt.jpg?camera_label=front-collar-closeup&revision=1794321827039&s=800"
         ]
       }
     ]
@@ -412,6 +484,9 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794317911563&s=800",
           "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794317911563&s=800",
           "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118235/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794317911563&s=800"
         ]
@@ -424,9 +499,11 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794317911563&s=800",
-          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794317911563&s=800",
           "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794317911563&s=800",
-          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794317911563&s=800"
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794317911563&s=800",
+          "https://images-api.printify.com/mockup/6af31ab9d6c0fb2ebb0d9fdd/118232/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794317911563&s=800"
         ]
       }
     ]
@@ -445,8 +522,8 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794321827023&s=800",
-          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118235/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794321827023&s=800"
@@ -460,8 +537,8 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/109442/knit-beanie-embroidery.jpg?camera_label=front&revision=1794321827023&s=800",
-          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110457/knit-beanie-embroidery.jpg?camera_label=front-2&revision=1794321827023&s=800",
+          "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/109443/knit-beanie-embroidery.jpg?camera_label=back&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110488/knit-beanie-embroidery.jpg?camera_label=back-2&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110474/knit-beanie-embroidery.jpg?camera_label=person-1-front&revision=1794321827023&s=800",
           "https://images-api.printify.com/mockup/6af31ac7d6c0fb2ebb0d9fde/118232/110476/knit-beanie-embroidery.jpg?camera_label=person-2-front&revision=1794321827023&s=800"
@@ -486,7 +563,9 @@
         ],
         "images": [
           "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/107813/free-youth-hoodie.jpg?camera_label=front&revision=1794318184037&s=800",
-          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/107814/free-youth-hoodie.jpg?camera_label=back&revision=1794318184037&s=800"
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/107814/free-youth-hoodie.jpg?camera_label=back&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/110737/free-youth-hoodie.jpg?camera_label=person-1-front&revision=1794318184037&s=800",
+          "https://images-api.printify.com/mockup/6a7a6c7f473223b1ad0964b0/43919/110750/free-youth-hoodie.jpg?camera_label=person-1-back&revision=1794318184037&s=800"
         ]
       },
       {
