@@ -45,7 +45,21 @@ import { PUBLIC_RESOURCES } from '../consts';
         </div>
       </div>
 
-      <div id="rs-filters" class="flex flex-wrap gap-2" role="group" aria-label="Filter by type of help" hidden></div>
+      <div id="rs-filters" class="space-y-4" hidden>
+        <div>
+          <p class="mb-2 text-sm font-semibold">What do you need help with?</p>
+          <div id="f-type" class="flex flex-wrap gap-2" role="group" aria-label="What do you need help with?"></div>
+        </div>
+        <div>
+          <p class="mb-2 text-sm font-semibold">I am… <span class="font-normal text-sparrow-gray dark:text-dark-muted">(pick all that fit)</span></p>
+          <div id="f-who" class="flex flex-wrap gap-2" role="group" aria-label="Who are you?"></div>
+        </div>
+        <div>
+          <p class="mb-2 text-sm font-semibold">Where?</p>
+          <div id="f-area" class="flex flex-wrap gap-2" role="group" aria-label="Where?"></div>
+        </div>
+        <button id="f-clear" type="button" class="text-sm text-sparrow-green underline dark:text-dark-heading" hidden>Clear all filters</button>
+      </div>
       <p id="rs-status" class="text-sparrow-gray dark:text-dark-muted">Loading resources…</p>
       <div id="rs-list" class="grid gap-4 md:grid-cols-2"></div>
       <noscript>
@@ -59,11 +73,31 @@ import { PUBLIC_RESOURCES } from '../consts';
   // Live from the staff portal: only services staff deliberately published, checked within
   // the last 2 years. Built with DOM nodes + textContent (never innerHTML) so nothing typed
   // into the portal can inject markup here.
+  //
+  // Filters use the same rule as the staff portal (matchesPerson / matchesAreas in
+  // sparrow-staff-portal/src/lib/resident-services.ts): pick everything that describes you;
+  // a service shows if it's for everyone or for any of your picks, except men-only and
+  // women-only services are hidden from the other one. Statewide services show for every
+  // area, and Corvallis and Benton County count for each other.
   const statusEl = document.getElementById('rs-status');
   const listEl = document.getElementById('rs-list');
   const filtersEl = document.getElementById('rs-filters');
+  const clearEl = document.getElementById('f-clear');
   let all = [];
-  let active = 'All';
+  const picked = { type: [], who: [], area: [] };
+
+  // Portal tag -> how a person would say it about themselves.
+  const WHO = [
+    ['Families with children', 'A parent or family with kids'],
+    ['Single adults', 'A single adult'],
+    ['Women only', 'A woman'],
+    ['Men only', 'A man'],
+    ['Youth', 'A young person'],
+    ['Seniors', 'A senior'],
+    ['Veterans', 'A veteran'],
+    ['People with disabilities', 'Living with a disability'],
+  ];
+  const AREAS = ['Corvallis', 'Benton County', 'Linn County', 'Lincoln County', 'Statewide'];
 
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
@@ -71,6 +105,26 @@ import { PUBLIC_RESOURCES } from '../consts';
     if (text != null) n.textContent = text;
     return n;
   };
+
+  function matchesPerson(r, picks) {
+    if (picks.length === 0) return true;
+    const serves = r.serves || [];
+    const menOnly = serves.includes('Men only') && !serves.includes('Women only');
+    const womenOnly = serves.includes('Women only') && !serves.includes('Men only');
+    if (menOnly && picks.includes('Women only') && !picks.includes('Men only')) return false;
+    if (womenOnly && picks.includes('Men only') && !picks.includes('Women only')) return false;
+    return serves.includes('All people') || picks.some((g) => serves.includes(g));
+  }
+
+  function matchesAreas(r, picks) {
+    if (picks.length === 0) return true;
+    const areas = r.areas || [];
+    if (areas.includes('Statewide')) return true;
+    const want = new Set(picks);
+    if (want.has('Corvallis')) want.add('Benton County');
+    if (want.has('Benton County')) want.add('Corvallis');
+    return areas.some((a) => want.has(a));
+  }
 
   function card(r) {
     const c = el('article', 'flex flex-col gap-2 rounded-2xl border border-sparrow-rule p-5 dark:border-dark-rule');
@@ -90,14 +144,17 @@ import { PUBLIC_RESOURCES } from '../consts';
       dd.append(value instanceof Node ? value : document.createTextNode(value));
       dl.append(dd);
     };
-    row('Where', r.address || 'Call for location');
+    // A confidential location (e.g. a domestic violence shelter) is never shown: the
+    // program decides who gets the address. A plain missing address just leaves the row out.
+    row('Where', r.location_confidential ? 'Call them for the location' : r.address);
+    row('Area', (r.areas || []).join(', '));
     row('When', r.hours);
     if (r.help_phone) {
       const a = el('a', 'text-sparrow-green underline dark:text-dark-heading', r.help_phone);
       a.href = 'tel:' + r.help_phone.replace(/[^\d+]/g, '');
       row('Phone', a);
     }
-    row('How to start', r.how_to_access);
+    row('First steps', r.how_to_access);
     if (r.website) {
       const href = /^https?:\/\//i.test(r.website) ? r.website : 'https://' + r.website;
       const a = el('a', 'text-sparrow-green underline dark:text-dark-heading', r.website.replace(/^https?:\/\//i, ''));
@@ -113,22 +170,38 @@ import { PUBLIC_RESOURCES } from '../consts';
   }
 
   function render() {
-    const shown = active === 'All' ? all : all.filter((r) => r.service_type === active);
+    const shown = all.filter((r) =>
+      (picked.type.length === 0 || picked.type.includes(r.service_type))
+      && matchesPerson(r, picked.who)
+      && matchesAreas(r, picked.area));
     listEl.replaceChildren(...shown.map(card));
-    filtersEl.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.type === active)));
+    statusEl.hidden = shown.length > 0;
+    if (shown.length === 0) statusEl.textContent = 'Nothing on our list matches all of these. Try fewer filters, or call or text 211 for more local services.';
+    filtersEl.querySelectorAll('button[data-group]').forEach((b) => {
+      const list = picked[b.dataset.group];
+      const on = b.dataset.value === '' ? list.length === 0 : list.includes(b.dataset.value);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    clearEl.hidden = picked.type.length + picked.who.length + picked.area.length === 0;
   }
 
-  function renderFilters() {
-    const types = ['All', ...Array.from(new Set(all.map((r) => r.service_type))).sort()];
-    filtersEl.replaceChildren(...types.map((t) => {
-      const b = el('button', 'rounded-full border border-sparrow-rule px-4 py-1.5 text-sm font-medium aria-pressed:border-sparrow-green aria-pressed:bg-sparrow-green aria-pressed:text-white dark:border-dark-rule', t);
+  function chips(container, group, options) {
+    const make = (value, label) => {
+      const b = el('button', 'rounded-full border border-sparrow-rule px-4 py-1.5 text-sm font-medium aria-pressed:border-sparrow-green aria-pressed:bg-sparrow-green aria-pressed:text-white dark:border-dark-rule', label);
       b.type = 'button';
-      b.dataset.type = t;
-      b.addEventListener('click', () => { active = t; render(); });
+      b.dataset.group = group;
+      b.dataset.value = value;
+      b.addEventListener('click', () => {
+        const list = picked[group];
+        picked[group] = value === '' ? [] : list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+        render();
+      });
       return b;
-    }));
-    filtersEl.hidden = types.length <= 2;
+    };
+    container.replaceChildren(make('', 'All'), ...options.map(([v, l]) => make(v, l)));
   }
+
+  clearEl.addEventListener('click', () => { picked.type = []; picked.who = []; picked.area = []; render(); });
 
   fetch(cfg.supabaseUrl + '/rest/v1/rpc/get_public_resources', {
     method: 'POST',
@@ -143,8 +216,11 @@ import { PUBLIC_RESOURCES } from '../consts';
         statusEl.textContent = "We're still putting this list together. In the meantime, call or text 211 for local services.";
         return;
       }
-      statusEl.hidden = true;
-      renderFilters();
+      const types = Array.from(new Set(all.map((r) => r.service_type))).sort();
+      chips(document.getElementById('f-type'), 'type', types.map((t) => [t, t]));
+      chips(document.getElementById('f-who'), 'who', WHO);
+      chips(document.getElementById('f-area'), 'area', AREAS.map((a) => [a, a]));
+      filtersEl.hidden = false;
       render();
     });
 </script>
