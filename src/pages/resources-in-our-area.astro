@@ -24,13 +24,24 @@ import { PUBLIC_RESOURCES } from '../consts';
   <Section bg="white">
     <div class="mx-auto max-w-content space-y-8">
       <div class="grid gap-3 sm:grid-cols-2">
-        <div class="rounded-2xl bg-sparrow-mist p-5 dark:bg-dark-surface">
-          <p class="font-semibold">Need help finding services right now?</p>
-          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call or text <strong>211</strong>, any time, for local help with housing, food, utilities and more.</p>
+        <div class="rounded-2xl border-2 border-red-700/70 bg-red-50 p-5 dark:border-red-400/60 dark:bg-red-950/40">
+          <p class="font-semibold">Medical emergency, or in danger right now?</p>
+          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call <a href="tel:911" class="font-bold text-sparrow-ink underline dark:text-dark-text">911</a>.</p>
         </div>
         <div class="rounded-2xl bg-sparrow-mist p-5 dark:bg-dark-surface">
-          <p class="font-semibold">In crisis?</p>
-          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call or text <strong>988</strong>, the Suicide &amp; Crisis Lifeline. In an emergency, call <strong>911</strong>.</p>
+          <p class="font-semibold">Domestic violence</p>
+          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">
+            Call <a href="tel:+15417540110" class="font-bold text-sparrow-ink underline dark:text-dark-text">541-754-0110</a>, the Center Against Rape and Domestic Violence (CARDV) 24-hour crisis line.
+            Or call the National Domestic Violence Hotline at <a href="tel:+18007997233" class="font-bold text-sparrow-ink underline dark:text-dark-text">1-800-799-7233</a> (text START to 88788).
+          </p>
+        </div>
+        <div class="rounded-2xl bg-sparrow-mist p-5 dark:bg-dark-surface">
+          <p class="font-semibold">Thinking about suicide, or in crisis?</p>
+          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call or text <a href="tel:988" class="font-bold text-sparrow-ink underline dark:text-dark-text">988</a>, the Suicide &amp; Crisis Lifeline, any time.</p>
+        </div>
+        <div class="rounded-2xl bg-sparrow-mist p-5 dark:bg-dark-surface">
+          <p class="font-semibold">Need help finding services?</p>
+          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call or text <a href="tel:211" class="font-bold text-sparrow-ink underline dark:text-dark-text">211</a>, any time, for local help with housing, food, utilities and more.</p>
         </div>
       </div>
 
@@ -71,7 +82,7 @@ import { PUBLIC_RESOURCES } from '../consts';
       r.serves.forEach((s) => chips.append(el('span', 'rounded-full bg-sparrow-mist px-2.5 py-0.5 text-xs dark:bg-dark-surface', s)));
       c.append(chips);
     }
-    const dl = el('dl', 'grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-1 text-sm');
+    const dl = el('dl', 'grid grid-cols-[6.5rem_1fr] gap-x-3 gap-y-1 text-sm');
     const row = (label, value) => {
       if (!value) return;
       dl.append(el('dt', 'text-sparrow-gray dark:text-dark-muted', label));
@@ -86,7 +97,7 @@ import { PUBLIC_RESOURCES } from '../consts';
       a.href = 'tel:' + r.help_phone.replace(/[^\d+]/g, '');
       row('Phone', a);
     }
-    row('How', r.how_to_access);
+    row('How to start', r.how_to_access);
     if (r.website) {
       const href = /^https?:\/\//i.test(r.website) ? r.website : 'https://' + r.website;
       const a = el('a', 'text-sparrow-green underline dark:text-dark-heading', r.website.replace(/^https?:\/\//i, ''));
