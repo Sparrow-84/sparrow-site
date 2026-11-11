@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { PUBLIC_RESOURCES } from '../consts';
+---
+
+<BaseLayout
+  title="Resources in Our Area"
+  description="Local organizations and programs Sparrow knows and refers people to: shelter, housing, food, legal help and more."
+  noindex={false}
+>
+  <Section bg="sage">
+    <div class="mx-auto max-w-3xl">
+      <p class="font-sans text-sm font-medium uppercase tracking-wide text-sparrow-gold">Resources</p>
+      <h1 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">Resources in Our Area</h1>
+      <p class="mt-5 text-lg text-sparrow-ink/80 dark:text-dark-text/80">
+        Sparrow can't be the right fit for everyone, and we're glad we don't have to be. These are local
+        organizations and programs we know and refer people to. It isn't a complete list of every service
+        around. Programs change, so please call ahead to confirm hours and who qualifies.
+      </p>
+    </div>
+  </Section>
+
+  <Section bg="white">
+    <div class="mx-auto max-w-content space-y-8">
+      <div class="grid gap-3 sm:grid-cols-2">
+        <div class="rounded-2xl bg-sparrow-mist p-5 dark:bg-dark-surface">
+          <p class="font-semibold">Need help finding services right now?</p>
+          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call or text <strong>211</strong>, any time, for local help with housing, food, utilities and more.</p>
+        </div>
+        <div class="rounded-2xl bg-sparrow-mist p-5 dark:bg-dark-surface">
+          <p class="font-semibold">In crisis?</p>
+          <p class="mt-1 text-sm text-sparrow-ink/80 dark:text-dark-text/80">Call or text <strong>988</strong>, the Suicide &amp; Crisis Lifeline. In an emergency, call <strong>911</strong>.</p>
+        </div>
+      </div>
+
+      <div id="rs-filters" class="flex flex-wrap gap-2" role="group" aria-label="Filter by type of help" hidden></div>
+      <p id="rs-status" class="text-sparrow-gray dark:text-dark-muted">Loading resources…</p>
+      <div id="rs-list" class="grid gap-4 md:grid-cols-2"></div>
+      <noscript>
+        <p>This list needs JavaScript to load. You can also call or text 211 for local services.</p>
+      </noscript>
+    </div>
+  </Section>
+</BaseLayout>
+
+<script define:vars={{ cfg: PUBLIC_RESOURCES }}>
+  // Live from the staff portal: only services staff deliberately published, checked within
+  // the last 2 years. Built with DOM nodes + textContent (never innerHTML) so nothing typed
+  // into the portal can inject markup here.
+  const statusEl = document.getElementById('rs-status');
+  const listEl = document.getElementById('rs-list');
+  const filtersEl = document.getElementById('rs-filters');
+  let all = [];
+  let active = 'All';
+
+  const el = (tag, cls, text) => {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  };
+
+  function card(r) {
+    const c = el('article', 'flex flex-col gap-2 rounded-2xl border border-sparrow-rule p-5 dark:border-dark-rule');
+    c.append(el('p', 'text-xs font-semibold uppercase tracking-wide text-sparrow-gold', r.service_type));
+    c.append(el('h2', 'font-serif text-xl font-semibold', r.provider));
+    c.append(el('p', 'font-medium', r.service));
+    if (r.serves && r.serves.length) {
+      const chips = el('div', 'flex flex-wrap gap-1.5');
+      r.serves.forEach((s) => chips.append(el('span', 'rounded-full bg-sparrow-mist px-2.5 py-0.5 text-xs dark:bg-dark-surface', s)));
+      c.append(chips);
+    }
+    const dl = el('dl', 'grid grid-cols-[5.5rem_1fr] gap-x-3 gap-y-1 text-sm');
+    const row = (label, value) => {
+      if (!value) return;
+      dl.append(el('dt', 'text-sparrow-gray dark:text-dark-muted', label));
+      const dd = el('dd', 'whitespace-pre-line');
+      dd.append(value instanceof Node ? value : document.createTextNode(value));
+      dl.append(dd);
+    };
+    row('Where', r.address || 'Call for location');
+    row('When', r.hours);
+    if (r.help_phone) {
+      const a = el('a', 'text-sparrow-green underline dark:text-dark-heading', r.help_phone);
+      a.href = 'tel:' + r.help_phone.replace(/[^\d+]/g, '');
+      row('Phone', a);
+    }
+    row('How', r.how_to_access);
+    if (r.website) {
+      const href = /^https?:\/\//i.test(r.website) ? r.website : 'https://' + r.website;
+      const a = el('a', 'text-sparrow-green underline dark:text-dark-heading', r.website.replace(/^https?:\/\//i, ''));
+      a.href = href;
+      a.rel = 'noopener';
+      a.target = '_blank';
+      row('Website', a);
+    }
+    c.append(dl);
+    const checked = new Date(r.last_checked_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    c.append(el('p', 'mt-auto pt-1 text-xs text-sparrow-gray dark:text-dark-muted', 'Info last checked ' + checked));
+    return c;
+  }
+
+  function render() {
+    const shown = active === 'All' ? all : all.filter((r) => r.service_type === active);
+    listEl.replaceChildren(...shown.map(card));
+    filtersEl.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.type === active)));
+  }
+
+  function renderFilters() {
+    const types = ['All', ...Array.from(new Set(all.map((r) => r.service_type))).sort()];
+    filtersEl.replaceChildren(...types.map((t) => {
+      const b = el('button', 'rounded-full border border-sparrow-rule px-4 py-1.5 text-sm font-medium aria-pressed:border-sparrow-green aria-pressed:bg-sparrow-green aria-pressed:text-white dark:border-dark-rule', t);
+      b.type = 'button';
+      b.dataset.type = t;
+      b.addEventListener('click', () => { active = t; render(); });
+      return b;
+    }));
+    filtersEl.hidden = types.length <= 2;
+  }
+
+  fetch(cfg.supabaseUrl + '/rest/v1/rpc/get_public_resources', {
+    method: 'POST',
+    headers: { apikey: cfg.anonKey, Authorization: 'Bearer ' + cfg.anonKey, 'Content-Type': 'application/json' },
+    body: '{}',
+  })
+    .then((res) => (res.ok ? res.json() : []))
+    .catch(() => [])
+    .then((rows) => {
+      all = Array.isArray(rows) ? rows : [];
+      if (all.length === 0) {
+        statusEl.textContent = "We're still putting this list together. In the meantime, call or text 211 for local services.";
+        return;
+      }
+      statusEl.hidden = true;
+      renderFilters();
+      render();
+    });
+</script>

@@ -120,3 +120,14 @@ export const NAV = [
   { label: 'Contact', href: '/contact' },
   { label: 'Shop', href: '/shop' },
 ];
+
+/**
+ * "Resources in Our Area" page: reads the staff portal's public list of services that staff
+ * deliberately published (get_public_resources, migration 0199 in sparrow-staff-portal).
+ * The anon key is designed to be public -- it already ships in the staff portal's own
+ * bundle -- and that function only returns public-facing fields of published services.
+ */
+export const PUBLIC_RESOURCES = {
+  supabaseUrl: 'https://etrsqgfxjfaqytlqrfti.supabase.co',
+  anonKey: 'sb_publishable_GmQATd-LwFF91k3q9Cv7Jw_ju2pzfkv',
+};
