@@ -78,7 +78,7 @@ import { PUBLIC_RESOURCES } from '../consts';
   // sparrow-staff-portal/src/lib/resident-services.ts): pick everything that describes you;
   // a service shows if it's for everyone or for any of your picks, except men-only and
   // women-only services are hidden from the other one. Statewide services show for every
-  // area, and Benton County includes Corvallis (not the other way around).
+  // area, and Benton County includes Corvallis and Philomath (not the other way around).
   const statusEl = document.getElementById('rs-status');
   const listEl = document.getElementById('rs-list');
   const filtersEl = document.getElementById('rs-filters');
@@ -97,7 +97,7 @@ import { PUBLIC_RESOURCES } from '../consts';
     ['Veterans', 'A veteran'],
     ['People with disabilities', 'Disability'],
   ];
-  const AREAS = ['Corvallis', 'Benton County', 'Linn County', 'Lincoln County', 'Statewide'];
+  const AREAS = ['Corvallis', 'Philomath', 'Benton County', 'Linn County', 'Lincoln County', 'Statewide'];
 
   const el = (tag, cls, text) => {
     const n = document.createElement(tag);
@@ -121,9 +121,9 @@ import { PUBLIC_RESOURCES } from '../consts';
     const areas = r.areas || [];
     if (areas.includes('Statewide')) return true;
     const want = new Set(picks);
-    // Corvallis is inside Benton County: picking Benton County includes Corvallis programs,
-    // but picking Corvallis doesn't pull in the rest of the county.
-    if (want.has('Benton County')) want.add('Corvallis');
+    // Corvallis and Philomath are inside Benton County: picking Benton County includes their
+    // programs, but picking a town doesn't pull in the rest of the county.
+    if (want.has('Benton County')) { want.add('Corvallis'); want.add('Philomath'); }
     return areas.some((a) => want.has(a));
   }
 
