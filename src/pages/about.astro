@@ -20,12 +20,20 @@ const leadership = team
   .filter((t) => t.data.group === 'leadership')
   .sort((a, b) => a.data.order - b.data.order);
 
-// Board of Directors — name + position only for now (no photos/bios yet, see byron-pending-items).
+// Board of Directors. A member with a public `group: board` entry in content/team gets its
+// photo + bio from there. Andrew shows photo only (his bio is already in the staff section);
+// Skip shows name + role until his photo and bio arrive.
+const boardBios = team.filter((t) => t.data.group === 'board');
 const BOARD = [
-  { name: 'Andrew Wenger', role: 'Board Chair' },
+  { name: 'Andrew Wenger', role: 'Board Chair', photo: '/images/team/andrew-wenger.jpg', photoPosition: 'top' },
   { name: 'Skip Martin', role: 'Board Secretary' },
   { name: 'Brenda Deneui', role: 'Board Treasurer' },
-];
+].map((b) => {
+  const entry = boardBios.find((t) => t.data.name === b.name);
+  return entry
+    ? { ...b, photo: entry.data.photo, photoPosition: entry.data.photoPosition, Content: entry.Content }
+    : b;
+});
 ---
 
 <BaseLayout
@@ -192,13 +200,14 @@ const BOARD = [
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-2xl font-semibold sm:text-3xl">Our board</h2>
     </div>
-    <div class="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
-      {BOARD.map((b) => (
-        <div class="text-center">
-          <p class="font-serif text-base font-semibold">{b.name}</p>
-          <p class="text-sm text-sparrow-gray dark:text-dark-muted">{b.role}</p>
-        </div>
-      ))}
+    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-2 gap-8 sm:grid-cols-3">
+      {BOARD.map((b) =>
+        b.Content ? (
+          <TeamMemberCard name={b.name} role={b.role} image={b.photo} photoPosition={b.photoPosition}><b.Content /></TeamMemberCard>
+        ) : (
+          <TeamMemberCard name={b.name} role={b.role} image={b.photo} photoPosition={b.photoPosition} />
+        )
+      )}
     </div>
   </Section>
 
