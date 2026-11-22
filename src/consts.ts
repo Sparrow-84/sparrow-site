@@ -19,6 +19,7 @@ export const SITE = {
 
 export const ORG = {
   legalName: 'Sparrow Inc.',
+  ein: '30-1210825',
   incorporated: 2019,
   address: {
     street: '245 SW Twin Oaks Circle',
@@ -33,6 +34,33 @@ export const GIVEBUTTER = {
   generalFund: 'https://givebutter.com/nzMxFi',
   communityCenter: 'https://givebutter.com/uK0uk8',
   hopeFund: 'https://givebutter.com/TT17Ds',
+};
+
+/** Public Form 990 (board-approved for the website, without Schedule B). Swap the link when a new year's 990 is filed. */
+export const FORM_990_URL =
+  'https://drive.google.com/file/d/1AzMU51V8ENawLdUaVEuB7l2ARBEF4f2u/view?usp=sharing';
+
+/**
+ * Credibility badges shown in the footer (and the Candid seal on About → Financial transparency).
+ *
+ * Candid: the seal image is served live by Candid, so it changes tier (Gold → Platinum) and
+ * year on its own. Nothing to update here.
+ *
+ * GreatNonprofits: our own badge, NOT their embed code (theirs loads Google Ads/Analytics
+ * tracking, which our privacy policy promises we don't use). The badge says "N five-star
+ * reviews", which stays true even if not updated — new reviews can only make it out of date,
+ * never wrong. Check the profile quarterly and bump `fiveStarReviews` to the current count
+ * of FIVE-star reviews only.
+ */
+export const CANDID = {
+  profileUrl:
+    'https://app.candid.org/profile/9859589/sparrow-30-1210825/?pkId=64ea9e5e-3cd4-4d06-84f4-54f37c4fc256',
+  sealSrc: 'https://widgets.guidestar.org/prod/v1/pdp/transparency-seal/9859589/svg',
+};
+
+export const GREATNONPROFITS = {
+  profileUrl: 'https://greatnonprofits.org/org/sparrow',
+  fiveStarReviews: 6, // last checked 2026-11-22
 };
 
 export const SOCIAL = {

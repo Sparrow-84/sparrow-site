@@ -6,6 +6,9 @@ import ValueCard from '../components/ValueCard.astro';
 import TeamMemberCard from '../components/TeamMemberCard.astro';
 import CTABand from '../components/CTABand.astro';
 import DonateButtons from '../components/DonateButtons.astro';
+import CandidSeal from '../components/CandidSeal.astro';
+import NewsletterSection from '../components/NewsletterSection.astro';
+import { FORM_990_URL } from '../consts';
 
 const valueEntries = (await getCollection('values')).sort((a, b) => a.data.order - b.data.order);
 const values = await Promise.all(
@@ -211,7 +214,7 @@ const BOARD = [
     </div>
   </Section>
 
-  <Section bg="mist">
+  <Section bg="mist" id="financial-transparency">
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-2xl font-semibold sm:text-3xl">Financial transparency</h2>
       <p class="mt-4 leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90">
@@ -219,9 +222,10 @@ const BOARD = [
         toward <a href="#core-values" class="underline hover:text-sparrow-green dark:hover:text-dark-heading">the mission and values</a> that
         guide our work.
       </p>
-      <div class="mt-6">
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
+        <CandidSeal size={96} />
         <a
-          href="https://drive.google.com/file/d/1AzMU51V8ENawLdUaVEuB7l2ARBEF4f2u/view?usp=sharing"
+          href={FORM_990_URL}
           target="_blank"
           rel="noopener noreferrer"
           class="btn-outline"
@@ -231,6 +235,8 @@ const BOARD = [
       </div>
     </div>
   </Section>
+
+  <NewsletterSection bg="white" />
 
   <CTABand
     title="Join the work of restoration"

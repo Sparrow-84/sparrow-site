@@ -8,6 +8,7 @@ import ProgramCard from '../components/ProgramCard.astro';
 import Testimonial from '../components/Testimonial.astro';
 import CTABand from '../components/CTABand.astro';
 import DonateButtons from '../components/DonateButtons.astro';
+import NewsletterSection from '../components/NewsletterSection.astro';
 
 const stats = await getCollection('stats');
 const communityEntries = await getCollection('community');
@@ -67,6 +68,8 @@ const FeaturedContent = firstFeatured ? (await firstFeatured.render()).Content :
       </Section>
     )
   }
+
+  <NewsletterSection bg="sage" />
 
   <CTABand
     title="Be the reason a family finds hope"

@@ -1,0 +1,23 @@
+---
+import Section from './Section.astro';
+import NewsletterForm from './forms/NewsletterForm.astro';
+
+interface Props {
+  /** Pick a background that differs from the section above it and the footer below. */
+  bg?: 'white' | 'mist' | 'sage' | 'cream';
+}
+const { bg = 'mist' } = Astro.props;
+---
+
+<!-- id="newsletter" is what the footer's "Subscribe to our newsletter" link jumps to. -->
+<Section bg={bg} id="newsletter">
+  <div class="grid items-center gap-10 md:grid-cols-2">
+    <div>
+      <h2 class="text-2xl font-semibold sm:text-3xl">Sign Up for Our Newsletter</h2>
+      <p class="mt-3 text-sparrow-gray dark:text-dark-muted">
+        Stay up-to-date with prayer requests, stories, and news from Sparrow.
+      </p>
+    </div>
+    <div><NewsletterForm pairedNames /></div>
+  </div>
+</Section>
