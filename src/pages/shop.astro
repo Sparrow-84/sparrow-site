@@ -28,16 +28,15 @@ const STORE_URL = 'https://sparrowmerch.printify.me';
     {/* One photo per product in the Printify Pop-Up Store. Keep this list in step with the store. */}
     <ul class="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
       {[
-        { src: '/images/shop/free-hoodie-indigo.webp', name: '"FREE" Hoodie', alt: 'Man wearing the "FREE" hoodie in indigo blue, with the Sparrow logo on the chest' },
-        { src: '/images/shop/free-crewneck-heather.webp', name: '"FREE" Crewneck', alt: 'Man wearing the "FREE" crewneck sweatshirt in dark heather gray, with the Sparrow logo on the chest' },
-        { src: '/images/shop/free-tee-purple.webp', name: '"FREE" T-Shirt', alt: 'Back of the "FREE" t-shirt in purple, with a flock of birds' },
-        { src: '/images/shop/polo.webp', name: 'Sparrow Polo', alt: 'Sparrow polo in forest green with the Sparrow logo on the chest' },
-        { src: '/images/shop/beanie-name.webp', name: 'Sparrow Beanie', alt: 'Dark green beanie embroidered with the Sparrow name and bird' },
-        { src: '/images/shop/beanie-bird.webp', name: 'Sparrow Bird Beanie', alt: 'Dark navy beanie embroidered with the Sparrow bird' },
+        { src: '/images/shop/free-hoodie-indigo.webp', alt: 'Man wearing the "FREE" hoodie in indigo blue, with the Sparrow logo on the chest' },
+        { src: '/images/shop/free-crewneck-green-back.webp', alt: 'Back of the "FREE" crewneck sweatshirt in forest green, with a flock of birds' },
+        { src: '/images/shop/free-tee-black.webp', alt: 'Man wearing the "FREE" t-shirt in black, with the Sparrow logo on the chest' },
+        { src: '/images/shop/polo.webp', alt: 'Sparrow polo in forest green with the Sparrow logo on the chest' },
+        { src: '/images/shop/beanie-name.webp', alt: 'Dark green beanie embroidered with the Sparrow name and bird' },
+        { src: '/images/shop/beanie-bird.webp', alt: 'Dark navy beanie embroidered with the Sparrow bird' },
       ].map((p) => (
         <li class="overflow-hidden rounded-2xl border border-sparrow-rule bg-white shadow-card dark:border-dark-rule dark:bg-dark-surface">
           <img src={p.src} alt={p.alt} width="800" height="800" class="aspect-square w-full object-cover" loading="lazy" />
-          <p class="px-3 py-2 text-center text-sm font-medium">{p.name}</p>
         </li>
       ))}
     </ul>
