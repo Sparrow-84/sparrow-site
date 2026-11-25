@@ -5,6 +5,7 @@ import Section from '../components/Section.astro';
 import PhotoGallery from '../components/PhotoGallery.astro';
 import FAQAccordion from '../components/FAQAccordion.astro';
 import { photo } from '../lib/media';
+import CommunityCenterBanner from '../components/CommunityCenterBanner.astro';
 
 const program = await getEntry('community', 'twin-oaks');
 if (!program) throw new Error('Missing community entry: twin-oaks');
@@ -22,6 +23,8 @@ const faqs = (await getCollection('faqs')).filter((f) => f.data.program === 'twi
   eyebrow="A Sparrow Housing Community"
   donateFunds={['communityCenter', 'hopeFund']}
 >
+  <CommunityCenterBanner />
+
   <Section bg="white">
     <div class="grid gap-10 md:grid-cols-2">
       <div class="leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90"><Content /></div>

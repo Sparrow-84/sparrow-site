@@ -52,6 +52,18 @@ import { WEB3FORMS_KEY } from '../../consts';
     const redirectField = document.getElementById('c-redirect') as HTMLInputElement | null;
     if (redirectField) redirectField.value = `${window.location.origin}/thank-you`;
 
+    // Other pages can link here with the topic picked and a message started, e.g.
+    // /contact?topic=Partnership&message=... (used by /community-center's "Offer in-kind help").
+    const params = new URLSearchParams(window.location.search);
+    const topicSelect = document.getElementById('c-topic') as HTMLSelectElement | null;
+    const wantedTopic = params.get('topic');
+    if (topicSelect && wantedTopic && Array.from(topicSelect.options).some((o) => o.value === wantedTopic)) {
+      topicSelect.value = wantedTopic;
+    }
+    const messageBox = document.getElementById('c-message') as HTMLTextAreaElement | null;
+    const startMessage = params.get('message');
+    if (messageBox && startMessage && !messageBox.value) messageBox.value = startMessage;
+
     // Pressing "back" after a successful submit can restore this page from the browser's
     // cache with the old message still filled in, looking like it was never sent. Reset it
     // so the form is visibly empty again, not just stale-looking.

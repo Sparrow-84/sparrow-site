@@ -9,6 +9,7 @@ import Testimonial from '../components/Testimonial.astro';
 import CTABand from '../components/CTABand.astro';
 import DonateButtons from '../components/DonateButtons.astro';
 import NewsletterSection from '../components/NewsletterSection.astro';
+import CommunityCenterBanner from '../components/CommunityCenterBanner.astro';
 
 const stats = await getCollection('stats');
 const communityEntries = await getCollection('community');
@@ -56,6 +57,8 @@ const FeaturedContent = firstFeatured ? (await firstFeatured.render()).Content :
       {allOfferings.map((p) => <ProgramCard program={p} href={programHref[p.slug] ?? '/'} />)}
     </div>
   </Section>
+
+  <CommunityCenterBanner />
 
   {
     FeaturedContent && firstFeatured && (

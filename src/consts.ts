@@ -36,6 +36,18 @@ export const GIVEBUTTER = {
   hopeFund: 'https://givebutter.com/TT17Ds',
 };
 
+/**
+ * Community Center fundraising bar (/community-center).
+ * GiveButter gifts are added live by functions/api/community-center-total.js.
+ * `raisedOutsideGivebutter` = gifts that did NOT come through GiveButter (grants, checks,
+ * Sparrow's own commitment). Update it by hand when one of those comes in.
+ *   2026-11-24: Sparrow $50,000 + Kiwanis Club of Corvallis $1,000 = $51,000
+ */
+export const COMMUNITY_CENTER = {
+  goal: 568_000,
+  raisedOutsideGivebutter: 51_000,
+};
+
 /** Public Form 990 (board-approved for the website, without Schedule B). Swap the link when a new year's 990 is filed. */
 export const FORM_990_URL =
   'https://drive.google.com/file/d/1AzMU51V8ENawLdUaVEuB7l2ARBEF4f2u/view?usp=sharing';

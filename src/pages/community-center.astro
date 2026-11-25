@@ -1,0 +1,409 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { GIVEBUTTER, COMMUNITY_CENTER } from '../consts';
+import { existsSync } from 'node:fs';
+
+// Facts come from the Community Center grant packet (Building Details + Project Budget,
+// 2026-11-21) and Andrew's room-use notes. Keep them in step with those documents.
+const IMG = '/images/community-center';
+// Opens the contact form with "Partnership" picked and a starter message.
+const inKindHref = `/contact?${new URLSearchParams({
+  topic: 'Partnership',
+  message: "I'd like to offer in-kind help for the Community Center (building materials, skilled labor, equipment or services): ",
+})}`;
+const fmt = (n: number) => `$${n.toLocaleString('en-US')}`;
+const startRaised = COMMUNITY_CENTER.raisedOutsideGivebutter;
+const startPct = Math.min(100, (startRaised / COMMUNITY_CENTER.goal) * 100);
+
+// "Why" copy follows the Ralph Hull request letter (2026-11-23), the version funders have seen.
+const residentReasons = [
+  ['Resident services.', 'Staff in the reception office are there to help residents connect with resources like health insurance, healthcare, government assistance and job searching.'],
+  ['Stay safe.', 'A weatherized warming and cooling center on the hottest and coldest days.'],
+  ['Learn.', 'Community events and classes year-round, not just outdoors in summer.'],
+  ['Celebrate.', 'Reserve the gathering room for a birthday or family get-together, at no cost.'],
+  ['Laundry & showers.', 'A commercial laundry room, and an accessible restroom with a shower open 24/7, for anyone without running water at home.'],
+  ['Fully accessible.', 'All on one level, with a ramp from parking, ADA restrooms and a roll-in shower.'],
+];
+const lcpReasons = [
+  ['Private space.', 'Two meeting rooms for group sessions, plus an office and the reception room for one-on-one mentoring.'],
+  ['Room to gather.', 'The gathering room is big enough for LifeChange dinners and larger group gatherings.'],
+  ['A place for kids.', 'A play area stocked with toys: a safe, free place for moms to bring their kids when they need to get out of the house.'],
+  ['Room to grow.', 'With more space, LifeChange will be able to welcome more families at a time.'],
+];
+
+const roomCards = [
+  { img: 'gathering-room-2.jpg', title: 'By the fire', text: 'A gas fireplace anchors the room, with the kitchen just steps away.', alt: "The gathering room's stone fireplace and seating area" },
+  { img: 'meeting-room.jpg', title: 'Two meeting rooms', text: 'For childcare, small resident gatherings, classes, and LifeChange meetings.', alt: 'A meeting room with a long table and green chairs' },
+  { img: 'reception-room.jpg', title: 'Reception', text: 'Where residents meet one-on-one with staff for resident services and mentoring. A window looks into the gathering room, so staff are close by but never in the way.', alt: 'The reception office, with a window into the gathering room' },
+  { img: 'office-view.jpg', title: 'Offices', text: 'Sparrow staff on site, right where residents live, with room for mentoring.', alt: 'A small office with a desk and two chairs' },
+  { img: 'bathroom.jpg', title: 'Accessible restrooms', text: 'Two accessible restrooms. The one with the roll-in shower is open 24/7 for park residents.', alt: 'An accessible restroom with grab bars' },
+];
+
+const views = [
+  { label: 'Floor plan', img: 'floor-plan-overview.jpg', alt: 'Watercolor floor plan seen from above, with numbered rooms' },
+  { label: 'South', img: 'south-elevation.jpg', alt: 'South side of the building' },
+  { label: 'West', img: 'west-elevation.jpg', alt: 'West side of the building' },
+  { label: 'North', img: 'north-elevation.jpg', alt: 'North side of the building' },
+  { label: 'East', img: 'east-elevation.jpg', alt: 'East side of the building' },
+];
+
+// Room numbers on the floor plan: [name, left %, top %] of the picture.
+// Numbered in a loop: gathering room, then counter-clockwise around the building, hall last.
+const rooms: [string, number, number][] = [
+  ['Gathering room', 75, 45],
+  ['Kitchen', 87, 72],
+  ['Closet', 63.5, 66],
+  ['Meeting room', 54, 68],
+  ['Meeting room', 39, 68],
+  ['Laundry', 19, 68],
+  ['Covered porch', 11.5, 47],
+  ['Restroom & shower', 20, 34],
+  ['Restroom', 31, 36],
+  ['Office', 42, 33],
+  ['Reception', 55, 33],
+  ['Hall', 44, 49],
+];
+
+const budget: [string, number][] = [
+  ['Interior finishes, kitchen & laundry', 120_000],
+  ['Roof & exterior', 110_500],
+  ['Heating, plumbing & electrical', 102_000],
+  ['Site prep & foundation', 62_000],
+  ['Contingency (unforeseen costs)', 50_000],
+  ['Permits & utility connections', 48_500],
+  ['Framing & structure', 47_500],
+  ['Site work & landscaping', 27_500],
+];
+const budgetMax = budget[0][1];
+
+const steps = [
+  { title: 'Plans drawn', text: 'Building plans and a full project budget are done.', done: true },
+  { title: 'Raising funds', text: 'Gathering gifts from neighbors, churches, businesses and foundations.', now: true },
+  { title: 'Break ground', text: "We're planning to start building in spring 2027." },
+  { title: 'Building', text: 'Construction, from foundation to finishing touches.' },
+  { title: 'Open the doors', text: 'Residents and LifeChange families move in to their new space.' },
+];
+
+// Funder wall. Logos sit on a white tile so any logo reads on the dark site.
+// Drop the file at the `logo` path; until it exists the funder's name shows instead.
+// Only list a logo once the funder has said yes (Kiwanis: OK'd 2026-11-24).
+const funders = [
+  { name: 'Kiwanis Club of Corvallis', logo: '/images/community-center/funders/kiwanis.png' },
+].map((f) => ({ ...f, hasLogo: existsSync(`public${f.logo}`) }));
+
+const muted = 'text-sparrow-gray dark:text-dark-muted';
+const body = 'text-sparrow-ink/90 dark:text-dark-text/90';
+const check = 'text-sparrow-gold';
+---
+
+<BaseLayout
+  title="Twin Oaks Community Center"
+  description="Help build the Twin Oaks Community Center: a safe, welcoming gathering place for Twin Oaks residents and LifeChange families in South Corvallis."
+  ogImage={`${IMG}/south-hero.jpg`}
+>
+  <!-- Full-width banner picture -->
+  <img
+    src={`${IMG}/south-hero.jpg`}
+    alt="Watercolor rendering of the Community Center's front porch, with a mother and two children walking out the main entry"
+    width="1920"
+    height="717"
+    class="block aspect-[16/9] w-full object-cover sm:aspect-[1920/717]"
+    loading="eager"
+  />
+
+  <!-- Title band -->
+  <section class="bg-sparrow-green-dark text-white">
+    <div class="mx-auto max-w-content px-4 py-12 text-center sm:px-6 md:py-14">
+      <p class="font-sans text-sm uppercase tracking-wide text-sparrow-gold">A Sparrow building project</p>
+      <h1 class="mt-2 font-serif text-4xl font-semibold text-white sm:text-5xl">Twin Oaks Community Center</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-white/90">
+        One building where Twin Oaks neighbors gather and LifeChange families grow.
+      </p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href={GIVEBUTTER.communityCenter} target="_blank" rel="noopener" class="btn-gold">Give to the Community Center</a>
+        <a href={inKindHref} class="inline-flex items-center justify-center rounded-2xl border border-white/60 px-6 py-3 font-sans font-medium text-white transition hover:bg-white/10">Offer in-kind help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The goal -->
+  <Section bg="white">
+    <div class="grid gap-8 text-center sm:grid-cols-3">
+      <div>
+        <p class="font-serif text-5xl font-semibold text-sparrow-gold">{fmt(COMMUNITY_CENTER.goal)}</p>
+        <p class={`mt-2 ${body}`}>total project budget</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl font-semibold text-sparrow-gold">1,910</p>
+        <p class={`mt-2 ${body}`}>square feet, all on one level,<br />plus a covered porch</p>
+      </div>
+      <div>
+        <p class="font-serif text-5xl font-semibold text-sparrow-gold">Spring 2027</p>
+        <p class={`mt-2 ${body}`}>when we're planning<br />to break ground</p>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-12 max-w-2xl" id="cc-progress" data-outside={startRaised} data-goal={COMMUNITY_CENTER.goal}>
+      <div class="flex items-baseline justify-between text-sm">
+        <span class="font-semibold text-sparrow-green dark:text-dark-heading"><span data-raised>{fmt(startRaised)}</span> raised so far</span>
+        <span class={muted}>Goal: {fmt(COMMUNITY_CENTER.goal)}</span>
+      </div>
+      <div class="mt-2 h-3 overflow-hidden rounded-full bg-sparrow-sage dark:bg-dark-surface" role="progressbar" aria-label="Raised toward the goal" aria-valuemin="0" aria-valuemax={COMMUNITY_CENTER.goal} aria-valuenow={startRaised}>
+        <div data-bar class="h-full rounded-full bg-sparrow-gold transition-[width] duration-700" style={`width:${startPct}%`}></div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Why -->
+  <Section bg="sage">
+    <h2 class="text-center text-2xl font-semibold sm:text-3xl">Why a community center?</h2>
+    <p class={`mx-auto mt-3 max-w-2xl text-center text-lg ${body}`}>
+      A gathering place for Twin Oaks residents and LifeChange participants
+    </p>
+    <div class="mt-10 grid gap-10 md:grid-cols-2">
+      <div>
+        <h3 class="text-xl font-semibold">For Twin Oaks residents</h3>
+        <p class={`mt-3 leading-relaxed ${body}`}>
+          A place for residents to gather, visit with each other, or enjoy some quiet and a hot cup of coffee. It's open to the whole Twin Oaks community throughout the week, right next to home, with no reservation needed.
+        </p>
+        <ul class="mt-5 space-y-3">
+          {residentReasons.map(([lead, text]) => (
+            <li class="flex gap-3"><span class={`mt-0.5 ${check}`} aria-hidden="true">✓</span><span class={body}><b class="text-sparrow-ink dark:text-dark-text">{lead}</b> {text}</span></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold">For LifeChange families</h3>
+        <p class={`mt-3 leading-relaxed ${body}`}>
+          Today, LifeChange group sessions and mentoring happen in our small office, where voices carry and the honest, private conversations our work depends on are hard to have. The Community Center will be a true home base for LifeChange families.
+        </p>
+        <ul class="mt-5 space-y-3">
+          {lcpReasons.map(([lead, text]) => (
+            <li class="flex gap-3"><span class={`mt-0.5 ${check}`} aria-hidden="true">✓</span><span class={body}><b class="text-sparrow-ink dark:text-dark-text">{lead}</b> {text}</span></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <img
+      src={`${IMG}/west-elevation.jpg`}
+      alt="Watercolor rendering of the long west side of the building, with an accessible ramp and neighbors on the covered porch"
+      width="1600" height="683" loading="lazy"
+      class="cc-zoom mt-10 w-full cursor-zoom-in rounded-2xl shadow-card"
+      data-cap="West side, with the ramp and covered porch"
+    />
+  </Section>
+
+  <!-- Inside -->
+  <Section bg="white" id="inside">
+    <h2 class="text-2xl font-semibold sm:text-3xl">Take a look inside</h2>
+    <p class={`mt-2 max-w-prose ${muted}`}>Concept illustrations of the preliminary design. Click any picture to see it larger.</p>
+
+    <figure class="mt-8 overflow-hidden rounded-2xl border border-sparrow-rule shadow-card dark:border-dark-rule dark:bg-dark-surface">
+      <img src={`${IMG}/gathering-room-1.jpg`} alt="The gathering room, with neighbors of all ages visiting on couches and kids at a table" width="1600" height="900" loading="lazy" class="cc-zoom w-full cursor-zoom-in" data-cap="Gathering room, 730 sq ft" />
+      <figcaption class="grid gap-2 p-6 sm:grid-cols-[auto_1fr] sm:gap-8">
+        <h3 class="text-xl font-semibold">The gathering room</h3>
+        <p class={body}>730 square feet under a vaulted ceiling, with a fireplace and a kitchen area.</p>
+      </figcaption>
+    </figure>
+
+    <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {roomCards.map((r) => (
+        <figure class="overflow-hidden rounded-2xl border border-sparrow-rule shadow-card dark:border-dark-rule dark:bg-dark-surface">
+          <img src={`${IMG}/${r.img}`} alt={r.alt} loading="lazy" class="cc-zoom aspect-[4/3] w-full cursor-zoom-in object-cover" data-cap={r.title} />
+          <figcaption class="p-5">
+            <h3 class="text-lg font-semibold">{r.title}</h3>
+            <p class={`mt-1 text-sm ${muted}`}>{r.text}</p>
+          </figcaption>
+        </figure>
+      ))}
+      <div class="flex flex-col justify-center rounded-2xl bg-sparrow-cream p-6 dark:bg-dark-surface">
+        <h3 class="text-lg font-semibold">Also inside</h3>
+        <ul class={`mt-3 space-y-2 text-sm ${body}`}>
+          <li class="flex gap-2"><span class={check} aria-hidden="true">✓</span>A commercial laundry room</li>
+          <li class="flex gap-2"><span class={check} aria-hidden="true">✓</span>A kitchen with accessible-height counters</li>
+          <li class="flex gap-2"><span class={check} aria-hidden="true">✓</span>Closets and storage</li>
+          <li class="flex gap-2"><span class={check} aria-hidden="true">✓</span>Fresh-air ventilation and heating and cooling throughout</li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- The building -->
+  <Section bg="sage">
+    <h2 class="text-2xl font-semibold sm:text-3xl">The building</h2>
+    <!-- Left: view tabs + picture. Right: rooms/at-a-glance box, top-aligned with the tabs. -->
+    <div class="mt-6 grid items-start gap-8 lg:grid-cols-[2fr_1fr]">
+     <div>
+      <div class="flex flex-wrap gap-2" role="tablist" aria-label="Building views">
+      {views.map((v, i) => (
+        <button
+          type="button"
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-img={`${IMG}/${v.img}`}
+          data-alt={v.alt}
+          data-plan={i === 0 ? 'true' : 'false'}
+          class="cc-tab rounded-full border border-sparrow-green/40 bg-white px-4 py-1.5 text-sm font-medium text-sparrow-green transition aria-selected:border-sparrow-green aria-selected:bg-sparrow-green aria-selected:text-white dark:border-dark-rule dark:bg-dark-bg dark:text-dark-heading dark:aria-selected:border-sparrow-green dark:aria-selected:bg-sparrow-green dark:aria-selected:text-white"
+        >{v.label}</button>
+      ))}
+    </div>
+      <div class="relative mt-5">
+        <img id="cc-view" src={`${IMG}/${views[0].img}`} alt={views[0].alt} width="1600" height="900" loading="lazy" class="cc-zoom w-full cursor-zoom-in rounded-2xl bg-white shadow-card" data-cap="Floor plan" />
+        <div id="cc-pins" class="pointer-events-none absolute inset-0" aria-hidden="true">
+          {rooms.map(([, x, y], i) => (
+            <span style={`left:${x}%;top:${y}%`} class="absolute flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white bg-sparrow-green text-[9px] font-bold leading-none text-white shadow sm:h-5 sm:w-5 sm:text-[10px]">{i + 1}</span>
+          ))}
+        </div>
+      </div>
+     </div>
+      <div class="rounded-2xl bg-white p-6 shadow-card dark:bg-dark-bg">
+        <div id="cc-legend">
+          <h3 class="text-lg font-semibold">Rooms</h3>
+          <ol class={`mt-2 grid grid-flow-col grid-rows-6 gap-x-3 gap-y-1 text-[13px] ${body}`}>
+            {rooms.map(([name], i) => (
+              <li class="flex items-center gap-1.5"><span class="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sparrow-green text-[9px] font-bold leading-none text-white">{i + 1}</span>{name}</li>
+            ))}
+          </ol>
+          <hr class="my-4 border-sparrow-rule dark:border-dark-rule" />
+        </div>
+        <h3 class="text-lg font-semibold">At a glance</h3>
+        <dl class="mt-4 space-y-3 text-sm">
+          <div><dt class={muted}>Size</dt><dd class={`font-medium ${body}`}>About 1,910 sq ft on one level, plus a covered porch</dd></div>
+          <div><dt class={muted}>Gathering room</dt><dd class={`font-medium ${body}`}>730 sq ft, vaulted ceiling, gas fireplace</dd></div>
+          <div><dt class={muted}>Accessibility</dt><dd class={`font-medium ${body}`}>Ramp from parking, two accessible restrooms, roll-in shower</dd></div>
+          <div><dt class={muted}>Exterior</dt><dd class={`font-medium ${body}`}>Metal roof, fiber cement siding, covered porch</dd></div>
+        </dl>
+        <p class={`mt-5 text-xs ${muted}`}>Preliminary design, subject to change through final design and permitting.</p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Where the money goes -->
+  <Section bg="white">
+    <div class="grid gap-10 lg:grid-cols-[1fr_2fr]">
+      <div>
+        <h2 class="text-2xl font-semibold sm:text-3xl">Where the money goes</h2>
+        <p class={`mt-3 leading-relaxed ${body}`}>Every dollar given to the Community Center goes toward building it. Here's how the {fmt(COMMUNITY_CENTER.goal)} budget breaks down.</p>
+        <p class={`mt-3 text-xs ${muted}`}>Estimates prepared before bidding. Final costs will be set by contractor bids.</p>
+      </div>
+      <ul class="space-y-4">
+        {budget.map(([label, amt]) => (
+          <li>
+            <div class="flex items-baseline justify-between gap-4 text-sm">
+              <span class={`font-medium ${body}`}>{label}</span>
+              <span class={`tabular-nums ${muted}`}>{fmt(amt)} · {Math.round((amt / COMMUNITY_CENTER.goal) * 100)}%</span>
+            </div>
+            <div class="mt-1.5 h-2.5 rounded-full bg-sparrow-sage dark:bg-dark-surface">
+              <div class="h-full rounded-full bg-sparrow-green dark:bg-dark-heading" style={`width:${(amt / budgetMax) * 100}%`}></div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <!-- Where we are -->
+  <Section bg="sage">
+    <h2 class="text-2xl font-semibold sm:text-3xl">Where we are</h2>
+    <ol class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+      {steps.map((s, i) => (
+        <li class={`relative rounded-2xl bg-white p-6 shadow-card dark:bg-dark-bg ${s.now ? 'ring-2 ring-sparrow-gold' : ''}`}>
+          {s.now && <span class="absolute right-4 top-4 rounded-full bg-sparrow-cream px-2 py-0.5 font-sans text-xs font-semibold text-sparrow-ink">Now</span>}
+          <div class={`flex h-9 w-9 items-center justify-center rounded-full font-serif ${s.now ? 'bg-sparrow-gold text-sparrow-ink' : 'bg-sparrow-green text-white'}`}>{s.done ? '✓' : i + 1}</div>
+          <h3 class="mt-3 text-lg">{s.title}</h3>
+          <p class={`mt-1 text-sm ${muted}`}>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </Section>
+
+  <!-- Thank you -->
+  <Section bg="white">
+    <div class="text-center">
+      <h2 class="text-2xl font-semibold sm:text-3xl">Thank you to those building with us</h2>
+      <p class={`mx-auto mt-3 max-w-prose ${body}`}>Every gift, large or small, brings the Community Center closer.</p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        {funders.map((f) =>
+          f.hasLogo ? (
+            <div class="flex h-28 w-64 items-center justify-center rounded-2xl bg-white p-5 shadow-card">
+              <img src={f.logo} alt={f.name} class="max-h-full max-w-full object-contain" loading="lazy" />
+            </div>
+          ) : (
+            <div class="flex h-28 w-64 items-center justify-center rounded-2xl border border-sparrow-rule px-4 text-sm font-semibold text-sparrow-green dark:border-dark-rule dark:text-dark-heading">{f.name}</div>
+          ),
+        )}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Closing -->
+  <Section bg="green-dark">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-semibold text-white sm:text-3xl">Help us build it</h2>
+      <p class="mt-3 text-white/85">Give toward the Community Center, or get in touch if you can help with building materials, skilled labor, equipment or services.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href={GIVEBUTTER.communityCenter} target="_blank" rel="noopener" class="btn-gold">Give to the Community Center</a>
+        <a href={inKindHref} class="inline-flex items-center justify-center rounded-2xl border border-white/60 px-6 py-3 font-sans font-medium text-white transition hover:bg-white/10">Offer in-kind help</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Enlarged picture -->
+  <dialog id="cc-lightbox" class="m-auto max-h-none max-w-none bg-transparent p-4 backdrop:bg-black/85">
+    <img id="cc-lightbox-img" alt="" class="max-h-[82vh] max-w-[92vw] rounded-xl" />
+    <p id="cc-lightbox-cap" class="mt-3 text-center text-sm text-white"></p>
+  </dialog>
+</BaseLayout>
+
+<script>
+  // Live total: outside-GiveButter amount (built into the page) + GiveButter campaign total.
+  const progress = document.getElementById('cc-progress');
+  if (progress) {
+    const outside = Number(progress.dataset.outside);
+    const goal = Number(progress.dataset.goal);
+    fetch('/api/community-center-total')
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (!d || typeof d.raised !== 'number') return; // keep the built-in amount
+        const total = outside + d.raised;
+        progress.querySelector('[data-raised]')!.textContent = `$${total.toLocaleString('en-US')}`;
+        (progress.querySelector('[data-bar]') as HTMLElement).style.width = `${Math.min(100, (total / goal) * 100)}%`;
+        progress.querySelector('[role="progressbar"]')!.setAttribute('aria-valuenow', String(total));
+      })
+      .catch(() => {});
+  }
+
+  // Building view tabs
+  const view = document.getElementById('cc-view') as HTMLImageElement | null;
+  const pins = document.getElementById('cc-pins');
+  const legend = document.getElementById('cc-legend');
+  document.querySelectorAll<HTMLButtonElement>('.cc-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cc-tab').forEach((t) => t.setAttribute('aria-selected', 'false'));
+      tab.setAttribute('aria-selected', 'true');
+      if (!view) return;
+      view.src = tab.dataset.img!;
+      view.alt = tab.dataset.alt!;
+      view.dataset.cap = tab.textContent ?? '';
+      const isPlan = tab.dataset.plan === 'true';
+      if (pins) pins.style.display = isPlan ? '' : 'none';
+      if (legend) legend.style.display = isPlan ? '' : 'none';
+    });
+  });
+
+  // Click a picture to see it larger
+  const box = document.getElementById('cc-lightbox') as HTMLDialogElement | null;
+  const boxImg = document.getElementById('cc-lightbox-img') as HTMLImageElement | null;
+  const boxCap = document.getElementById('cc-lightbox-cap');
+  document.querySelectorAll<HTMLImageElement>('.cc-zoom').forEach((img) => {
+    img.addEventListener('click', () => {
+      if (!box || !boxImg || !boxCap) return;
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      boxCap.textContent = img.dataset.cap ?? '';
+      box.showModal();
+    });
+  });
+  box?.addEventListener('click', () => box.close());
+</script>
