@@ -18,11 +18,11 @@ const startPct = Math.min(100, (startRaised / COMMUNITY_CENTER.goal) * 100);
 
 // "Why" copy follows the Ralph Hull request letter (2026-11-23), the version funders have seen.
 const residentReasons = [
-  ['Resident services.', 'Staff in the reception office are there to help residents connect with resources like health insurance, healthcare, government assistance and job searching.'],
+  ['Resident services.', 'Staff in the reception office are there to help residents connect with resources like health insurance, government assistance and job searching.'],
   ['Stay safe.', 'A weatherized warming and cooling center on the hottest and coldest days.'],
-  ['Learn.', 'Community events and classes year-round, not just outdoors in summer.'],
-  ['Celebrate.', 'Reserve the gathering room for a birthday or family get-together, at no cost.'],
-  ['Laundry & showers.', 'A commercial laundry room, and an accessible restroom with a shower open 24/7, for anyone without running water at home.'],
+  ['Learn.', 'Community events and classes year-round.'],
+  ['Celebrate.', 'Reserve the gathering room for a birthday or family get-together.'],
+  ['Laundry & showers.', 'A commercial laundry room, and an accessible restroom with a shower open 24/7.'],
   ['Fully accessible.', 'All on one level, with a ramp from parking, ADA restrooms and a roll-in shower.'],
 ];
 const lcpReasons = [
@@ -165,7 +165,7 @@ const check = 'text-sparrow-gold';
       <div>
         <h3 class="text-xl font-semibold">For Twin Oaks residents</h3>
         <p class={`mt-3 leading-relaxed ${body}`}>
-          A place for residents to gather, visit with each other, or enjoy some quiet and a hot cup of coffee. It's open to the whole Twin Oaks community throughout the week, right next to home, with no reservation needed.
+          A place for residents to gather, visit with each other, or enjoy some quiet and a hot cup of coffee. It's open to the whole Twin Oaks community throughout the week, right next to home.
         </p>
         <ul class="mt-5 space-y-3">
           {residentReasons.map(([lead, text]) => (
