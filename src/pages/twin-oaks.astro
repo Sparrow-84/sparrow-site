@@ -23,8 +23,6 @@ const faqs = (await getCollection('faqs')).filter((f) => f.data.program === 'twi
   eyebrow="A Sparrow Housing Community"
   donateFunds={['communityCenter', 'hopeFund']}
 >
-  <CommunityCenterBanner />
-
   <Section bg="white">
     <div class="grid gap-10 md:grid-cols-2">
       <div class="leading-relaxed text-sparrow-ink/90 dark:text-dark-text/90"><Content /></div>
@@ -43,6 +41,8 @@ const faqs = (await getCollection('faqs')).filter((f) => f.data.program === 'twi
       </div>
     </div>
   </Section>
+
+  <CommunityCenterBanner />
 
   <Section bg="sage">
     <h2 class="text-2xl font-semibold sm:text-3xl">How to apply</h2>
